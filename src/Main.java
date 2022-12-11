@@ -7,8 +7,8 @@
  *
  * @author Pearita
  */
-
-public class GameWindow {
-    public GameWindow() {        
-    } 
+public class Main {
+    public static void main(String[] args) {
+        new MainWindow();
+    }
 }
