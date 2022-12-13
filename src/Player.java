@@ -5,6 +5,9 @@
 
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.ImageIO;
 
 
 /**
@@ -33,20 +36,42 @@ public class Player extends Entity {
         solidArea.height= 32;
         
         setDefaultValues();
+        getPlayerImage();
         
     }
     public void setDefaultValues() {
         worldX = gp.tileSize * 12;
         worldY = gp.tileSize * 9;
         speed = 5;
+        direction = "down";
     }
+    
+    public void getPlayerImage() {
+        
+        try {
+            
+            walkR1 = ImageIO.read(getClass().getResourceAsStream("/res/player/walkR1.png"));
+            walkR2 = ImageIO.read(getClass().getResourceAsStream("/res/player/walkR2.png"));
+            walkL1 = ImageIO.read(getClass().getResourceAsStream("/res/player/walkL1.png"));
+            walkL2 = ImageIO.read(getClass().getResourceAsStream("/res/player/walkL2.png"));
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void update() {
  
 //        worldY += speed; 
         if(keyH.upPressed == true || keyH.downPressed == true || 
                 keyH.leftPressed == true || keyH.rightPressed == true){
+            
             if(keyH.upPressed == true) {
+<<<<<<< HEAD
+                direction = "up";
+=======
                 direction = "up";     
+>>>>>>> 364863abdd268f534622493409831fe4880b1c18
             }
             else if(keyH.downPressed == true) {
                 direction = "down";
@@ -57,8 +82,12 @@ public class Player extends Entity {
             else if(keyH.rightPressed == true) {
                 direction = "right";
             }
+<<<<<<< HEAD
+//            Check Tile Collision
+=======
             
             //Check Tile Collision
+>>>>>>> 364863abdd268f534622493409831fe4880b1c18
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
@@ -84,6 +113,21 @@ public class Player extends Entity {
                 case "right":
                     worldX += speed;
                     break;
+<<<<<<< HEAD
+                }
+                
+                spriteCounter++;
+                if (spriteCounter > 10) {
+                    if (spriteNum == 1) {
+                        spriteNum = 2;
+                    }
+                    else if (spriteNum == 2) {
+                    spriteNum = 1;
+                    }
+                    spriteCounter = 0;
+                }
+           }
+=======
     //                    default: worldY += speed;
             }  
 //        }
@@ -93,11 +137,38 @@ public class Player extends Entity {
 //            gp.cChecker.checkTile(this);
 //            if(collisionOn == false)
 //                worldY += speed; 
+>>>>>>> 364863abdd268f534622493409831fe4880b1c18
         }
     }
     public void draw(Graphics2D g2) {
         
-        g2.setColor(Color.WHITE);
-        g2.fillRect(screenX, screenY, gp.tileSize, gp.tileSize);       
+        BufferedImage image = null;
+        
+        switch (direction) {
+            case "up":
+                image = walkR1;
+                break;
+            case "down":
+                image = walkR1;
+                break;
+            case "left":
+                if (spriteNum == 1) {
+                    image = walkL1;
+                }
+                if (spriteNum == 2) {
+                    image = walkL2;
+                }
+                break;
+            case "right":
+                if (spriteNum == 1) {
+                    image = walkR1;
+                }
+                if (spriteNum == 2) {
+                    image = walkR2;
+                }
+        }
+        
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        
     }
 }
