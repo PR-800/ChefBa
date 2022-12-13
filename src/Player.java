@@ -5,6 +5,9 @@
 
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.ImageIO;
 
 
 /**
@@ -33,31 +36,48 @@ public class Player extends Entity {
         solidArea.height= 32;
         
         setDefaultValues();
+        getPlayerImage();
         
     }
     public void setDefaultValues() {
         worldX = gp.tileSize * 12;
         worldY = gp.tileSize * 9;
         speed = 5;
+        direction = "down";
     }
+    
+    public void getPlayerImage() {
+        
+        try {
+            
+            walkR1 = ImageIO.read(getClass().getResourceAsStream("/res/player/walkR1.png"));
+            walkR2 = ImageIO.read(getClass().getResourceAsStream("/res/player/walkR2.png"));
+            walkL1 = ImageIO.read(getClass().getResourceAsStream("/res/player/walkL1.png"));
+            walkL2 = ImageIO.read(getClass().getResourceAsStream("/res/player/walkL2.png"));
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void update() {
 //       worldY += speed;
         if(keyH.upPressed == true || keyH.downPressed == true || 
                 keyH.leftPressed == true || keyH.rightPressed == true){
+            
             if(keyH.upPressed == true) {
-//                worldY -= speed*2;
-//                worldY -= speed;
+                direction = "up";
             }
             else if(keyH.downPressed == true) {
-//                worldY += speed;
+                direction = "down";
             }
             else if(keyH.leftPressed == true) {
-//               worldX -= speed;
+                direction = "left";
             }
             else if(keyH.rightPressed == true) {
-//                worldX += speed;
+                direction = "right";
             }
-            //Check Tile Collision
+//            Check Tile Collision
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
@@ -77,12 +97,49 @@ public class Player extends Entity {
                     worldX += speed;
                     break;
                 }
+                
+                spriteCounter++;
+                if (spriteCounter > 10) {
+                    if (spriteNum == 1) {
+                        spriteNum = 2;
+                    }
+                    else if (spriteNum == 2) {
+                    spriteNum = 1;
+                    }
+                    spriteCounter = 0;
+                }
            }
         }
     }
     public void draw(Graphics2D g2) {
         
-        g2.setColor(Color.WHITE);
-        g2.fillRect(screenX, screenY, gp.tileSize, gp.tileSize);       
+        BufferedImage image = null;
+        
+        switch (direction) {
+            case "up":
+                image = walkR1;
+                break;
+            case "down":
+                image = walkR1;
+                break;
+            case "left":
+                if (spriteNum == 1) {
+                    image = walkL1;
+                }
+                if (spriteNum == 2) {
+                    image = walkL2;
+                }
+                break;
+            case "right":
+                if (spriteNum == 1) {
+                    image = walkR1;
+                }
+                if (spriteNum == 2) {
+                    image = walkR2;
+                }
+        }
+        
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        
     }
 }
