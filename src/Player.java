@@ -41,34 +41,42 @@ public class Player extends Entity {
         speed = 5;
     }
     public void update() {
-//       worldY += speed;
+ 
+//        worldY += speed; 
         if(keyH.upPressed == true || keyH.downPressed == true || 
                 keyH.leftPressed == true || keyH.rightPressed == true){
             if(keyH.upPressed == true) {
-//                worldY -= speed*2;
-//                worldY -= speed;
+                direction = "up";     
             }
             else if(keyH.downPressed == true) {
-//                worldY += speed;
+                direction = "down";
             }
             else if(keyH.leftPressed == true) {
-//               worldX -= speed;
+                direction = "left";
             }
             else if(keyH.rightPressed == true) {
-//                worldX += speed;
+                direction = "right";
             }
+            
             //Check Tile Collision
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
             //If Collision is False, Player can move
-            if(collisionOn == false){
-                switch(direction){
+            
+                
+            }
+        if(collisionOn == false){
+            worldY += speed;
+            gp.cChecker.checkTile(this);
+            
+            switch(direction){
                 case "up":
+    //                    worldY -= speed*2;
                     worldY -= speed;
                     break;
                 case "down":
-                    worldY += speed;
+    //                        worldY += speed;
                     break;
                 case "left":
                     worldX -= speed;
@@ -76,8 +84,15 @@ public class Player extends Entity {
                 case "right":
                     worldX += speed;
                     break;
-                }
-           }
+    //                    default: worldY += speed;
+            }  
+//        }
+//        else {
+            //Check Tile Collision
+//            collisionOn = false;
+//            gp.cChecker.checkTile(this);
+//            if(collisionOn == false)
+//                worldY += speed; 
         }
     }
     public void draw(Graphics2D g2) {
