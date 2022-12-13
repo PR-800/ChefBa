@@ -15,33 +15,33 @@ import javax.swing.*;
 
 public class MainWindow implements ActionListener, MouseListener, KeyListener{
     //Main
-    private JFrame window;
-    private JPanel pTitle, pButton;
-    private JLabel lTitle;
-    private Font fTitle, fButton;
-    private JButton bStart, bQuit, bHow;
+    public JFrame window;
+    public JPanel pTitle, pButton;
+    public JLabel lTitle;
+    public Font fTitle, fButton;
+    public JButton bStart, bQuit, bHow;
     
     //Cutscene
-    private JFrame Cwindow;
-    private JPanel pPic;
-    private JLabel lPic;
-    private String url;
-    private static int count = 1;
-    private ImageIcon cs;
-    private Image img, newimg;
+    public JFrame Cwindow;
+    public JPanel pPic;
+    public JLabel lPic;
+    public String url;
+    public static int count = 1;
+    public ImageIcon cs;
+    public Image img, newimg;
     
     //How to play
-    private JFrame Hwindow;
-    private JPanel pHow;
+    public JFrame Hwindow;
+    public JPanel pHow;
 
     //Screen
-    private GraphicsEnvironment environment;
-    private GraphicsDevice device;
-    private GraphicsConfiguration config;
-    private int currentScreenWidth, currentScreenHeight;
+    public GraphicsEnvironment environment;
+    public GraphicsDevice device;
+    public GraphicsConfiguration config;
+    public int currentScreenWidth, currentScreenHeight;
     
     //Audio
-    private static boolean audioOn = false;
+    public static boolean audioOn = false;
     
     //Game state
     public int gameState;
@@ -211,7 +211,8 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
             case 6 -> url = "cg6.png";
             case 7 -> {
                 reScene();
-                window.setVisible(true);    // ** Skip to gameplay
+                new MainGame();    //Skip to gameplay
+                window.setVisible(false);
                 Cwindow.setVisible(false);
             }
             default -> { url = "cg1.png"; }
@@ -237,7 +238,8 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
                 int skip = JOptionPane.showConfirmDialog(null, "Skip cutscene", "Confirm Action", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(skip == JOptionPane.YES_OPTION) {
                     reScene();
-                    window.setVisible(true);    // ** Skip to gameplay
+                    new MainGame();    //Skip to gameplay
+                    window.setVisible(false);
                     Cwindow.setVisible(false);
                 }                      
             }

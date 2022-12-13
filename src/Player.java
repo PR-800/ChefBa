@@ -27,22 +27,26 @@ public class Player extends Entity {
         this.keyH = keyH;
         
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
+//        screenX = gp.screenWidth + (gp.tileSize*(gp.screenWidth));
         screenY = gp.screenHeight/2;
         
+        System.out.println(gp.screenWidth);
+        
         solidArea = new Rectangle();
-        solidArea.x = 8;
-        solidArea.y = 16;
-        solidArea.width = 32;
-        solidArea.height= 32;
+        solidArea.x = 17;
+        solidArea.y = 18;
+        solidArea.width = 28;
+        solidArea.height= 34;
         
         setDefaultValues();
         getPlayerImage();
         
     }
     public void setDefaultValues() {
+        //player position
         worldX = gp.tileSize * 12;
         worldY = gp.tileSize * 9;
-        speed = 5;
+        speed = 6;
         direction = "down";
     }
     

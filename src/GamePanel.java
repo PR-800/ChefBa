@@ -19,19 +19,25 @@ public class GamePanel extends JPanel implements Runnable{
     final int originalTileSize = 16;    //16*16 tile
     final int scale = 4;
     
+    //set fullscreen
+    private GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    private GraphicsDevice device = environment.getDefaultScreenDevice();
+    private GraphicsConfiguration config = device.getDefaultConfiguration();
+
     public final int tileSize = originalTileSize * scale;  //128*128 tile
     public final int maxScreenCol = 25;
     public final int maxScreenRow = 14;
-    public final int screenWidth = tileSize*maxScreenCol;  //1024
-    public final int screenHeight = tileSize*maxScreenRow; //768
+//    public final int screenWidth = tileSize*maxScreenCol;  //1024
+//    public final int screenHeight = tileSize*maxScreenRow; //768
+    public final int screenWidth = config.getBounds().width;
+    public final int screenHeight = config.getBounds().height;
     
     // WORLD SETTINGS
     public final int maxWorldCol = 100;
     public final int maxWorldRow = 50;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
-    
-    
+        
     int FPS = 60;
     
     TileManager tileM = new TileManager(this);
@@ -45,7 +51,6 @@ public class GamePanel extends JPanel implements Runnable{
     //Set Player defult position
    
     public GamePanel() {
-       
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);   //smoother
