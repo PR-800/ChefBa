@@ -16,20 +16,23 @@ import javax.swing.*;
 public class MainWindow implements ActionListener, MouseListener, KeyListener{
     //Main
     private JFrame window;
-    private Container con;
     private JPanel pTitle, pButton;
     private JLabel lTitle;
     private Font fTitle, fButton;
-    private JButton bStart, bQuit, bFull, bExitFull;
+    private JButton bStart, bQuit, bHow;
     
     //Cutscene
     private JFrame Cwindow;
-    private JPanel pSpace, pPic;
+    private JPanel pPic;
     private JLabel lPic;
     private String url;
     private static int count = 1;
     private ImageIcon cs;
     private Image img, newimg;
+    
+    //How to play
+    private JFrame Hwindow;
+    private JPanel pHow;
 
     //Screen
     private GraphicsEnvironment environment;
@@ -39,8 +42,15 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
     
     //Audio
     private static boolean audioOn = false;
+    
+    //Game state
+    public int gameState;
+    public final int playState = 1;
 
-    public MainWindow() {       
+    public MainWindow() {      
+        
+        gameState = 1;
+        
         //set fullscreen
         environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         device = environment.getDefaultScreenDevice();
@@ -74,8 +84,8 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         
         //buttons
         pButton = new JPanel();
-        GridLayout layout = new GridLayout(2,1);
-        layout.setVgap(10);
+        GridLayout layout = new GridLayout(3,1);
+        layout.setVgap(8);
         pButton.setLayout(layout);
         int startX = (int) Math.round(currentScreenWidth*0.375);
         int startY = (int) Math.round(currentScreenHeight*0.58);
@@ -87,12 +97,18 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         bStart.setForeground(Color.WHITE);
         bStart.setFont(fButton);
         bStart.addActionListener(this);
+        bHow = new JButton("HOW TO PLAY");
+        bHow.setBackground(Color.BLACK);
+        bHow.setForeground(Color.WHITE);
+        bHow.setFont(fButton);
+        bHow.addActionListener(this);
         bQuit = new JButton("QUIT");
         bQuit.setBackground(Color.BLACK);
         bQuit.setForeground(Color.WHITE);
         bQuit.setFont(fButton);
         bQuit.addActionListener(this);
         pButton.add(bStart);
+        pButton.add(bHow);
         pButton.add(bQuit);
 
         //frame add
@@ -132,11 +148,24 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         lPic.setIcon(cs);
         lPic.addMouseListener(this);
         pPic.add(lPic);
-        
+           
         //frame add
         Cwindow.add(pPic);
         Cwindow.addKeyListener(this);
         Cwindow.setVisible(false);
+        
+        // **How to play** window
+        Hwindow = new JFrame("Chef Ba the Master Chef"); 
+        Hwindow.setBackground(Color.BLACK);
+        Hwindow.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        Hwindow.setUndecorated(true);
+        
+        //details
+        pHow = new JPanel();
+        pHow.setLayout(new GridLayout(5,1));
+        
+        //frame add
+        Hwindow.setVisible(false);
     }
     
     public JFrame getMainWindow() { return this.window; }
@@ -148,10 +177,22 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
             Cwindow.setVisible(true);
             window.setVisible(false);
         }
+        if (e.getSource().equals(bHow)) {
+            System.exit(0);
+        }
         if (e.getSource().equals(bQuit)) {
             System.exit(0);
         }
     }  
+    
+    public void update() {
+        if(gameState == 1) {
+            
+        }
+        if(gameState == 0) {
+            
+        }
+    }
     
     public void reScene() {
         count = 0;
