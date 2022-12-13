@@ -30,10 +30,10 @@ public class Player extends Entity {
         screenY = gp.screenHeight/2;
         
         solidArea = new Rectangle();
-        solidArea.x = 17;
-        solidArea.y = 18;
-        solidArea.width = 28;
-        solidArea.height= 34;
+        solidArea.x = 8;
+        solidArea.y = 16;
+        solidArea.width = 32;
+        solidArea.height= 32;
         
         setDefaultValues();
         getPlayerImage();
@@ -42,7 +42,7 @@ public class Player extends Entity {
     public void setDefaultValues() {
         worldX = gp.tileSize * 12;
         worldY = gp.tileSize * 9;
-        speed = 6;
+        speed = 5;
         direction = "down";
     }
     
@@ -61,16 +61,9 @@ public class Player extends Entity {
     }
     
     public void update() {
- 
-//        worldY += speed; 
-        if(keyH.upPressed == true || keyH.downPressed == true || 
-                keyH.leftPressed == true || keyH.rightPressed == true){
-            
+        if(keyH.upPressed == true || keyH.leftPressed == true || keyH.rightPressed == true){   
             if(keyH.upPressed == true) {
                 direction = "up";
-            }
-            else if(keyH.downPressed == true) {
-                direction = "down";
             }
             else if(keyH.leftPressed == true) {
                 direction = "left";
@@ -83,28 +76,21 @@ public class Player extends Entity {
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
-            //If Collision is False, Player can move
-            
-                
-        if(collisionOn == false){
-//            worldY += speed;
-            gp.cChecker.checkTile(this);
-            
-            switch(direction){
-                case "up":
-    //                    worldY -= speed*2;
-                    worldY -= speed;
-                    break;
-                case "down":
-                    worldY += speed;
-                    break;
-                case "left":
-                    worldX -= speed;
-                    break;
-                case "right":
-                    worldX += speed;
-                    break;
+            //If Collision is False, Player can move  
+            if(collisionOn == false){
+                switch(direction){
+                    case "up":
+                        worldY -= speed*2;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
                 }
+                
+                
                 
                 spriteCounter++;
                 if (spriteCounter > 10) {
@@ -116,45 +102,76 @@ public class Player extends Entity {
                     }
                     spriteCounter = 0;
                 }
-           }
+                
+                direction = "down";
+            }
         }  
-//        }
-//        else {
-            //Check Tile Collision
-//            collisionOn = false;
-//            gp.cChecker.checkTile(this);
-//            if(collisionOn == false)
-//                worldY += speed; 
+        gp.cChecker.checkTile(this);
+        if (collisionOn == false) {
+            switch(direction){
+                case "down":
+                    worldY += speed;
+                    break;
+            }
+        }
     }
     
     public void draw(Graphics2D g2) {
         
         BufferedImage image = null;
         
-        switch (direction) {
-            case "up":
-                image = walkR1;
-                break;
-            case "down":
-                image = walkR1;
-                break;
-            case "left":
-                if (spriteNum == 1) {
-                    image = walkL1;
-                }
-                if (spriteNum == 2) {
-                    image = walkL2;
-                }
-                break;
-            case "right":
-                if (spriteNum == 1) {
-                    image = walkR1;
-                }
-                if (spriteNum == 2) {
-                    image = walkR2;
-                }
-        }
+//        switch (direction) {
+//            case "up":
+//                image = walkR1;
+//                break;
+//            case "left":
+//                if (spriteNum == 1) {
+//                    image = walkL1;
+//                }
+//                if (spriteNum == 2) {
+//                    image = walkL2;
+//                }
+//                break;
+//            case "right":
+//                if (spriteNum == 1) {
+//                    image = walkR1;
+//                }
+//                if (spriteNum == 2) {
+//                    image = walkR2;
+//                }
+//            case "down":
+//                image = walkR1;
+//                break;
+//        }
         
+        if (direction.equals("up")) { 
+            image = walkR1; 
+        }
+        else if (direction.equals("left")) { 
+            if (spriteNum == 1) {
+                image = walkL1;
+            }
+            if (spriteNum == 2) {
+                image = walkL2;
+            }
+        }
+        else if (direction.equals("right")) { 
+            if (spriteNum == 1) {
+                image = walkR1;
+            }
+            if (spriteNum == 2) {
+                image = walkR2;
+            }
+        }
+        else if (direction.equals("down")) { 
+            if (spriteNum == 1) {
+                image = walkR1;
+            }
+            if (spriteNum == 2) {
+                image = walkR2;
+            }
+        }
+
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
         
     }
