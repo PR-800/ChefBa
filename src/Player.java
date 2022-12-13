@@ -67,11 +67,7 @@ public class Player extends Entity {
                 keyH.leftPressed == true || keyH.rightPressed == true){
             
             if(keyH.upPressed == true) {
-<<<<<<< HEAD
                 direction = "up";
-=======
-                direction = "up";     
->>>>>>> 364863abdd268f534622493409831fe4880b1c18
             }
             else if(keyH.downPressed == true) {
                 direction = "down";
@@ -82,21 +78,16 @@ public class Player extends Entity {
             else if(keyH.rightPressed == true) {
                 direction = "right";
             }
-<<<<<<< HEAD
-//            Check Tile Collision
-=======
             
             //Check Tile Collision
->>>>>>> 364863abdd268f534622493409831fe4880b1c18
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
             //If Collision is False, Player can move
             
                 
-            }
         if(collisionOn == false){
-            worldY += speed;
+//            worldY += speed;
             gp.cChecker.checkTile(this);
             
             switch(direction){
@@ -105,7 +96,7 @@ public class Player extends Entity {
                     worldY -= speed;
                     break;
                 case "down":
-    //                        worldY += speed;
+                    worldY += speed;
                     break;
                 case "left":
                     worldX -= speed;
@@ -113,7 +104,6 @@ public class Player extends Entity {
                 case "right":
                     worldX += speed;
                     break;
-<<<<<<< HEAD
                 }
                 
                 spriteCounter++;
@@ -127,9 +117,7 @@ public class Player extends Entity {
                     spriteCounter = 0;
                 }
            }
-=======
-    //                    default: worldY += speed;
-            }  
+        }  
 //        }
 //        else {
             //Check Tile Collision
@@ -137,9 +125,8 @@ public class Player extends Entity {
 //            gp.cChecker.checkTile(this);
 //            if(collisionOn == false)
 //                worldY += speed; 
->>>>>>> 364863abdd268f534622493409831fe4880b1c18
-        }
     }
+    
     public void draw(Graphics2D g2) {
         
         BufferedImage image = null;
