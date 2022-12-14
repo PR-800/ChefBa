@@ -41,7 +41,7 @@ public class GamePanel extends JPanel implements Runnable{
     int FPS = 60;
     
     TileManager tileM = new TileManager(this);
-    KeyHandler keyH =  new KeyHandler();
+    KeyHandler keyH = new KeyHandler(this);
     Thread gameThread;
     
     public CollisionChecker cChecker = new CollisionChecker(this);
@@ -57,6 +57,10 @@ public class GamePanel extends JPanel implements Runnable{
     public SuperObject obj6[] = new SuperObject[10];
     
     public AssetSetter aSetter = new AssetSetter(this);
+    
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
     
     //Set Player defult position
    
@@ -77,6 +81,9 @@ public class GamePanel extends JPanel implements Runnable{
         aSetter.setItemAnemone();
         aSetter.setItemSeagrass1();
         aSetter.setItemSeagrass2();
+        
+        gameState = playState;
+        
     }
     /////////////////////////
     
@@ -122,7 +129,10 @@ public class GamePanel extends JPanel implements Runnable{
         }
     }
     public void update() throws Exception {
-        player.update();
+        if (gameState == playState) {
+            player.update();
+        }
+        if (gameState == pauseState) {}
     }
     
     public void paintComponent(Graphics g) {
