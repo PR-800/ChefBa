@@ -18,7 +18,7 @@ public class Item_Anemone extends SuperObject {
     public Item_Anemone() {
         name = "anemone";
         try {
-            imageOct = ImageIO.read(getClass().getResourceAsStream("/res/items/anemone.png"));
+            imageAnemone = ImageIO.read(getClass().getResourceAsStream("/res/items/anemone.png"));
         } catch (IOException ex) {
             Logger.getLogger(Item_Anemone.class.getName()).log(Level.SEVERE, null, ex);
         }

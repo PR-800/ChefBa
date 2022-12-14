@@ -16,9 +16,9 @@ import javax.imageio.ImageIO;
 public class Item_Squid extends SuperObject {
     
     public Item_Squid() {
-        name = "oct";
+        name = "squid";
         try {
-            imageOct = ImageIO.read(getClass().getResourceAsStream("/res/items/oct.png"));
+            imageSquid = ImageIO.read(getClass().getResourceAsStream("/res/items/anemone.png"));
         } catch (IOException ex) {
             Logger.getLogger(Item_Squid.class.getName()).log(Level.SEVERE, null, ex);
         }

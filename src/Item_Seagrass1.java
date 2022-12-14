@@ -18,7 +18,7 @@ public class Item_Seagrass1 extends SuperObject {
     public Item_Seagrass1() {
         name = "seagrass1";
         try {
-            imageOct = ImageIO.read(getClass().getResourceAsStream("/res/items/seagrass1.png"));
+            imageSeagrass1 = ImageIO.read(getClass().getResourceAsStream("/res/items/seagrass1.png"));
         } catch (IOException ex) {
             Logger.getLogger(Item_Seagrass1.class.getName()).log(Level.SEVERE, null, ex);
         }
