@@ -50,6 +50,12 @@ public class GamePanel extends JPanel implements Runnable{
     /////// put Item//////////
     public SuperObject obj[] = new SuperObject[10]; // 10 -> means 10 slots -> can display up to 10 objs in same time // shark
     public SuperObject obj2[] = new SuperObject[10]; // octopus
+    
+    public SuperObject obj3[] = new SuperObject[10];
+    public SuperObject obj4[] = new SuperObject[10];
+    public SuperObject obj5[] = new SuperObject[10];
+    public SuperObject obj6[] = new SuperObject[10];
+    
     public AssetSetter aSetter = new AssetSetter(this);
     
     //Set Player defult position
@@ -66,6 +72,11 @@ public class GamePanel extends JPanel implements Runnable{
     public void setupGame(){ // set up before game start // shark
         aSetter.setObjectShark();
         aSetter.setObjectOctopus();
+        
+        aSetter.setItemOct();
+        aSetter.setItemAnemone();
+        aSetter.setItemSeagrass1();
+        aSetter.setItemSeagrass2();
     }
     /////////////////////////
     

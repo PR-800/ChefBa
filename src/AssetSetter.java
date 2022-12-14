@@ -36,4 +36,44 @@ public class AssetSetter {
         gp.obj2[1].worldX = 90*gp.tileSize;
         gp.obj2[1].worldY = 44*gp.tileSize;
     }
+    
+        public void setItemOct() {
+        gp.obj3[0] = new Item_Octopus();
+        gp.obj3[0].worldX = 63*gp.tileSize;
+        gp.obj3[0].worldY = 36*gp.tileSize;
+        
+        gp.obj3[1] = new Item_Octopus();
+        gp.obj3[1].worldX = 90*gp.tileSize;
+        gp.obj3[1].worldY = 44*gp.tileSize;
+    }
+        
+        public void setItemAnemone() {
+        gp.obj4[0] = new Item_Anemone();
+        gp.obj4[0].worldX = 63*gp.tileSize;
+        gp.obj4[0].worldY = 36*gp.tileSize;
+        
+        gp.obj4[1] = new Item_Anemone();
+        gp.obj4[1].worldX = 90*gp.tileSize;
+        gp.obj4[1].worldY = 44*gp.tileSize;
+    }
+                
+        public void setItemSeagrass1() {
+        gp.obj5[0] = new Item_Seagrass1();
+        gp.obj5[0].worldX = 63*gp.tileSize;
+        gp.obj5[0].worldY = 36*gp.tileSize;
+        
+        gp.obj5[1] = new Item_Seagrass1();
+        gp.obj5[1].worldX = 90*gp.tileSize;
+        gp.obj5[1].worldY = 44*gp.tileSize;
+    }
+        
+        public void setItemSeagrass2() {
+        gp.obj6[0] = new Item_Seagrass2();
+        gp.obj6[0].worldX = 63*gp.tileSize;
+        gp.obj6[0].worldY = 36*gp.tileSize;
+        
+        gp.obj6[1] = new Item_Seagrass2();
+        gp.obj6[1].worldX = 90*gp.tileSize;
+        gp.obj6[1].worldY = 44*gp.tileSize;
+    }       
 }

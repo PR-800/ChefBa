@@ -23,7 +23,7 @@ public class KeyHandler implements KeyListener {
         
         int code = e.getKeyCode();
         
-        if(code == KeyEvent.VK_W) {
+        if(code == KeyEvent.VK_W || code == KeyEvent.VK_SPACE) {
             upPressed = true;
         }
         if(code == KeyEvent.VK_S) {
@@ -42,7 +42,7 @@ public class KeyHandler implements KeyListener {
         
         int code = e.getKeyCode();
         
-        if(code == KeyEvent.VK_W) {
+        if(code == KeyEvent.VK_W || code == KeyEvent.VK_SPACE) {
             upPressed = false;
         }
         if(code == KeyEvent.VK_S) {

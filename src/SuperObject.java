@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 
 public class SuperObject { // declare variable of obj
     public BufferedImage imageShark, imageOctopus;
+    public BufferedImage imageOct, imageAnemone, imageSeagrass1, imageSeagrass2 ;
     public String name, name2;
     public boolean collision = false;
     public int worldX, worldY;
@@ -29,4 +30,32 @@ public class SuperObject { // declare variable of obj
 
         g2.drawImage(imageOctopus, screenX, screenY, gp.tileSize, gp.tileSize, null);
     }
+    
+        public void drawOct(Graphics2D g2, GamePanel gp){
+        int screenX = worldX - gp.player.worldX + gp.player.screenX;
+        int screenY = worldY - gp.player.worldY + gp.player.screenY;
+
+        g2.drawImage(imageOct, screenX, screenY, gp.tileSize, gp.tileSize, null);
+    }
+        
+        public void drawAnemone(Graphics2D g2, GamePanel gp){
+        int screenX = worldX - gp.player.worldX + gp.player.screenX;
+        int screenY = worldY - gp.player.worldY + gp.player.screenY;
+
+        g2.drawImage(imageAnemone, screenX, screenY, gp.tileSize, gp.tileSize, null);
+    }
+                
+        public void drawSeagrass1(Graphics2D g2, GamePanel gp){
+        int screenX = worldX - gp.player.worldX + gp.player.screenX;
+        int screenY = worldY - gp.player.worldY + gp.player.screenY;
+
+        g2.drawImage(imageSeagrass1, screenX, screenY, gp.tileSize, gp.tileSize, null);
+    }
+        
+        public void drawSeagrass2(Graphics2D g2, GamePanel gp){
+        int screenX = worldX - gp.player.worldX + gp.player.screenX;
+        int screenY = worldY - gp.player.worldY + gp.player.screenY;
+
+        g2.drawImage(imageSeagrass2, screenX, screenY, gp.tileSize, gp.tileSize, null);
+    }        
 }
