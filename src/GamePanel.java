@@ -86,7 +86,7 @@ public class GamePanel extends JPanel implements Runnable{
                 }
                 
                 Thread.sleep((long) remainingTime);
-                
+                player.setJump(0);
                 nextDrawTime += drawInterval;
                 
             } catch (InterruptedException ex) {
@@ -107,8 +107,7 @@ public class GamePanel extends JPanel implements Runnable{
         Graphics2D g2 = (Graphics2D)g;
         
         tileM.draw(g2);
-        player.draw(g2);
-        
+        player.draw(g2);      
         
         g2.dispose();
     }
