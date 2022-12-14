@@ -27,6 +27,7 @@ public class MainGame extends MainWindow implements KeyListener{
         Gwindow.setLocationRelativeTo(null);
         Gwindow.setVisible(true);
         
+        gamePanel.setupGame();
         gamePanel.startGameThread();
     }
     
