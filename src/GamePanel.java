@@ -47,6 +47,10 @@ public class GamePanel extends JPanel implements Runnable{
     public CollisionChecker cChecker = new CollisionChecker(this);
     
     public Player player = new Player(this,keyH);
+    /////// put Item//////////
+    public SuperObject obj[] = new SuperObject[10]; // 10 -> means 10 slots -> can display up to 10 objs in same time // shark
+    public SuperObject obj2[] = new SuperObject[10]; // octopus
+    public AssetSetter aSetter = new AssetSetter(this);
     
     //Set Player defult position
    
@@ -57,6 +61,13 @@ public class GamePanel extends JPanel implements Runnable{
         this.addKeyListener(keyH);
         this.setFocusable(true);
     }
+    
+     /////// put Item//////////
+    public void setupGame(){ // set up before game start // shark
+        aSetter.setObjectShark();
+        aSetter.setObjectOctopus();
+    }
+    /////////////////////////
     
     public void startGameThread() {
         
@@ -110,6 +121,20 @@ public class GamePanel extends JPanel implements Runnable{
         Graphics2D g2 = (Graphics2D)g;
         
         tileM.draw(g2);
+        
+        /////// put Item//////////
+        for (int i = 0; i < obj.length; i++){
+            if (obj[i] != null){
+                obj[i].drawShark(g2, this);
+            }
+        }
+        for (int i = 0; i < obj2.length; i++){
+            if (obj2[i] != null){
+                obj2[i].drawOctopus(g2, this);
+            }
+        }
+        /////////////////////////////
+        
         player.draw(g2);      
         
         g2.dispose();
