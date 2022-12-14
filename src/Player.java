@@ -14,7 +14,7 @@ import javax.imageio.ImageIO;
  *
  * @author Fluk
  */
-public class Player extends Entity {
+public class Player extends Entity{
     
     GamePanel gp;
     KeyHandler keyH;
@@ -47,6 +47,8 @@ public class Player extends Entity {
         worldX = gp.tileSize * 12;
         worldY = gp.tileSize * 9;
         speed = 6;
+        jump = 0.0f;
+        time = 0.5f;
         direction = "down";
     }
     
@@ -63,6 +65,8 @@ public class Player extends Entity {
             e.printStackTrace();
         }
     }
+    
+    public void setJump(float jump) { this.jump = jump; }
     
     public void update() {
         if(keyH.upPressed == true || keyH.leftPressed == true || keyH.rightPressed == true){   
@@ -81,21 +85,23 @@ public class Player extends Entity {
             gp.cChecker.checkTile(this);
 
             //If Collision is False, Player can move  
-            if(collisionOn == false){
+            if(collisionOn == false){               
                 switch(direction){
-                    case "up":
-                        worldY -= speed*2;
-                        break;
-                    case "left":
+                    case "up":  
+                        jump+=time;
+                        if (jump <= 10.0f) {
+                            worldY -= speed*2;
+                            break;
+                        }
+                    case "left" :
                         worldX -= speed;
+                        directionImage = "left";
                         break;
                     case "right":
                         worldX += speed;
+                        directionImage = "right";
                         break;
                 }
-                
-                
-                
                 spriteCounter++;
                 if (spriteCounter > 10) {
                     if (spriteNum == 1) {
@@ -106,15 +112,16 @@ public class Player extends Entity {
                     }
                     spriteCounter = 0;
                 }
-                
                 direction = "down";
             }
         }  
+        
         gp.cChecker.checkTile(this);
         if (collisionOn == false) {
             switch(direction){
                 case "down":
                     worldY += speed;
+                    setJump(0);
                     break;
             }
         }
@@ -124,56 +131,29 @@ public class Player extends Entity {
         
         BufferedImage image = null;
         
-//        switch (direction) {
-//            case "up":
-//                image = walkR1;
-//                break;
-//            case "left":
-//                if (spriteNum == 1) {
-//                    image = walkL1;
-//                }
-//                if (spriteNum == 2) {
-//                    image = walkL2;
-//                }
-//                break;
-//            case "right":
-//                if (spriteNum == 1) {
-//                    image = walkR1;
-//                }
-//                if (spriteNum == 2) {
-//                    image = walkR2;
-//                }
-//            case "down":
-//                image = walkR1;
-//                break;
-//        }
-        
-        if (direction.equals("up")) { 
-            image = walkR1; 
-        }
-        else if (direction.equals("left")) { 
-            if (spriteNum == 1) {
-                image = walkL1;
-            }
-            if (spriteNum == 2) {
-                image = walkL2;
-            }
-        }
-        else if (direction.equals("right")) { 
-            if (spriteNum == 1) {
+        switch (directionImage) {
+            case "up":
                 image = walkR1;
-            }
-            if (spriteNum == 2) {
+                break;
+            case "left":
+                if (spriteNum == 1) {
+                    image = walkL1;
+                }
+                if (spriteNum == 2) {
+                    image = walkL2;
+                }
+                break;
+            case "right":
+                if (spriteNum == 1) {
+                    image = walkR1;
+                }
+                if (spriteNum == 2) {
+                    image = walkR2;
+                }
+                break;
+            case "down":
                 image = walkR2;
-            }
-        }
-        else if (direction.equals("down")) { 
-            if (spriteNum == 1) {
-                image = walkR1;
-            }
-            if (spriteNum == 2) {
-                image = walkR2;
-            }
+                break;
         }
 
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
