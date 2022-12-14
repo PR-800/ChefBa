@@ -7,7 +7,9 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.*;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.*;
 
 
 /**
@@ -68,9 +70,15 @@ public class Player extends Entity{
     
     public void setJump(float jump) { this.jump = jump; }
     
-    public void update() {
+    public void update() throws InterruptedException {
         if(keyH.upPressed == true || keyH.leftPressed == true || keyH.rightPressed == true){   
-            if(keyH.upPressed == true) {
+            if((keyH.upPressed == true) && (keyH.leftPressed == true) ) {
+                direction = "upleft";
+            }
+            else if((keyH.upPressed == true) && (keyH.rightPressed == true) ) {
+                direction = "upright";
+            }
+            else if(keyH.upPressed == true) {
                 direction = "up";
             }
             else if(keyH.leftPressed == true) {
@@ -80,19 +88,32 @@ public class Player extends Entity{
                 direction = "right";
             }
             
+            
             //Check Tile Collision
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
             //If Collision is False, Player can move  
-            if(collisionOn == false){               
+            if(collisionOn == false){  
                 switch(direction){
                     case "up":  
                         jump+=time;
-                        if (jump <= 10.0f) {
+                        if (jump <= 11.0f) {
                             worldY -= speed*2;
+                            try {
+                                Clip bgm = AudioSystem.getClip();
+                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
+                                bgm.open(inputStream);
+                                if (audioOn == false) {
+                                    audioOn = true;
+                                    bgm.start(); 
+                                }
+                            } catch (Exception e) {
+                                System.out.println(e);
+                            }
                             break;
                         }
+                        break;
                     case "left" :
                         worldX -= speed;
                         directionImage = "left";
@@ -101,7 +122,62 @@ public class Player extends Entity{
                         worldX += speed;
                         directionImage = "right";
                         break;
+                    case "upleft":
+                        jump+=time;
+                        checkJump = 1;
+                        if (jump <= 11.0f) {
+                            worldX -= speed*1.5;
+                            worldY -= speed*2;
+                            directionImage = "left";
+                            try {
+                                Clip bgm = AudioSystem.getClip();
+                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
+                                bgm.open(inputStream);
+                                if (audioOn == false) {
+                                    audioOn = true;
+                                    bgm.start(); 
+                                }
+                            } catch (Exception e) {
+                                System.out.println(e);
+                            }
+                            break;
+                        }
+                    case "upright":
+                        jump+=time;
+                        checkJump = 1;
+                        if (jump <= 11.0f) {
+                            worldX += speed*1.5;
+                            worldY -= speed*2;
+                            directionImage = "right";
+                            try {
+                                Clip bgm = AudioSystem.getClip();
+                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
+                                bgm.open(inputStream);
+                                if (audioOn == false) {
+                                    audioOn = true;
+                                    bgm.start(); 
+                                }
+                            } catch (Exception e) {
+                                System.out.println(e);
+                            }
+                            break;
+                        }          
                 }
+//                if(checkJump == 1){  
+//                    switch(direction){
+//                        case "upleft" :
+//                            worldX -= speed*1.5;
+//                            worldY += speed*2;
+//                            directionImage = "left";
+//                            break;
+//                        case "upright":
+//                            worldX += speed*1.5;
+//                            worldY += speed*2;
+//                            directionImage = "right";
+//                            break;
+//                    }
+//                }
+
                 spriteCounter++;
                 if (spriteCounter > 10) {
                     if (spriteNum == 1) {
@@ -121,8 +197,13 @@ public class Player extends Entity{
             switch(direction){
                 case "down":
                     worldY += speed;
-                    setJump(0);
                     break;
+            }
+        }
+        else {
+            if (jump > 11.0f) {
+                setJump(0);
+                audioOn = false;
             }
         }
     }

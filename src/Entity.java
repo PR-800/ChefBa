@@ -25,4 +25,8 @@ public class Entity {
     
     public Rectangle solidArea;
     public boolean collisionOn = false;
+    
+    public static boolean audioOn = false;
+    
+    public int checkJump = 0;
 }
