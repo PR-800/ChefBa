@@ -16,7 +16,7 @@ public class MainGame extends MainWindow implements KeyListener{
     
     public MainGame() {
         Gwindow = new JFrame();
-        Gwindow.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        Gwindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
         Gwindow.setUndecorated(true);
         
         gamePanel = new GamePanel();

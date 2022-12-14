@@ -13,14 +13,14 @@ import javax.imageio.ImageIO;
  *
  * @author Fluk
  */
-public class Item_Octopus extends SuperObject {
+public class Item_Squid extends SuperObject {
     
-    public Item_Octopus() {
+    public Item_Squid() {
         name = "oct";
         try {
             imageOct = ImageIO.read(getClass().getResourceAsStream("/res/items/oct.png"));
         } catch (IOException ex) {
-            Logger.getLogger(Item_Octopus.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Item_Squid.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

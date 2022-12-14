@@ -8,6 +8,7 @@
  * @author LENOVO
  */
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 public class SuperObject { // declare variable of obj
@@ -16,6 +17,9 @@ public class SuperObject { // declare variable of obj
     public String name, name2;
     public boolean collision = false;
     public int worldX, worldY;
+    public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
+    public int solidAreaDefaultX = 0;
+    public int solidAreaDefaultY = 0;
     
     public void drawShark(Graphics2D g2, GamePanel gp){
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
@@ -31,28 +35,28 @@ public class SuperObject { // declare variable of obj
         g2.drawImage(imageOctopus, screenX, screenY, gp.tileSize, gp.tileSize, null);
     }
     
-        public void drawOct(Graphics2D g2, GamePanel gp){
+    public void drawSquid(Graphics2D g2, GamePanel gp){
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
         g2.drawImage(imageOct, screenX, screenY, gp.tileSize, gp.tileSize, null);
     }
         
-        public void drawAnemone(Graphics2D g2, GamePanel gp){
+    public void drawAnemone(Graphics2D g2, GamePanel gp){
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
         g2.drawImage(imageAnemone, screenX, screenY, gp.tileSize, gp.tileSize, null);
     }
                 
-        public void drawSeagrass1(Graphics2D g2, GamePanel gp){
+    public void drawSeagrass1(Graphics2D g2, GamePanel gp){
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
         g2.drawImage(imageSeagrass1, screenX, screenY, gp.tileSize, gp.tileSize, null);
     }
         
-        public void drawSeagrass2(Graphics2D g2, GamePanel gp){
+    public void drawSeagrass2(Graphics2D g2, GamePanel gp){
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 

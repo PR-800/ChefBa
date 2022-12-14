@@ -21,5 +21,6 @@ public class OBJ_Octopus extends SuperObject{
         catch (IOException ex) {
             Logger.getLogger(OBJ_Shark.class.getName()).log(Level.SEVERE, null, ex);
         }
+        collision = true;
     }
 }
