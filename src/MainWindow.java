@@ -10,6 +10,11 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 import javax.swing.*;
 
@@ -17,7 +22,7 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
     //Main
     public JFrame window;
     public JPanel pTitle, pButton;
-    public JLabel lTitle;
+    public JLabel lTitle, lSubtitle;
     public Font fTitle, fButton;
     public JButton bStart, bQuit, bHow;
     
@@ -46,6 +51,9 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
     //Game state
     public int gameState;
     public final int playState = 1;
+    
+    //Background
+    public BufferedImage bg = null; 
 
     public MainWindow() {      
         
@@ -63,7 +71,16 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         window.setLayout(null);
         window.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         window.setUndecorated(true);
-
+        
+        //background
+        try {
+            bg = ImageIO.read(getClass().getResourceAsStream("/background/Main.png"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        Image image = bg.getScaledInstance(currentScreenWidth, currentScreenHeight, Image.SCALE_SMOOTH);
+        ImageIcon icon = new ImageIcon(image);
+        
         //font
         int titleFontSize = (int) Math.round(currentScreenWidth*0.0875);
         int buttonFontSize = (int) Math.round(currentScreenWidth*0.03125);
@@ -72,22 +89,29 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
 
         //title
         pTitle = new JPanel();
+        pTitle.setLayout(new GridLayout(2, 1));
+        pTitle.setOpaque(false);
         int titleX = (int) Math.round(currentScreenWidth*0.125);
-        int titleY = (int) Math.round(currentScreenHeight*0.166);
+        int titleY = (int) Math.round(currentScreenHeight*0.20);
         int titleW = (int) Math.round(currentScreenWidth*0.75);
         int titleH = (int) Math.round(currentScreenHeight*0.25);
         pTitle.setBounds(titleX, titleY, titleW, titleH);     
-        lTitle = new JLabel("CHEF BA");
-        lTitle.setForeground(Color.BLACK);
+        lTitle = new JLabel("CHEF BA", SwingConstants.CENTER);
+        lSubtitle = new JLabel("THE MASTER CHEF", SwingConstants.CENTER);
+        lTitle.setForeground(Color.WHITE);
         lTitle.setFont(fTitle);
+        lSubtitle.setForeground(Color.WHITE);
+        lSubtitle.setFont(fButton);
         pTitle.add(lTitle);
+        pTitle.add(lSubtitle);
         
         //buttons
         pButton = new JPanel();
+        pButton.setOpaque(false);
         GridLayout layout = new GridLayout(3,1);
         layout.setVgap(8);
         pButton.setLayout(layout);
-        int startX = (int) Math.round(currentScreenWidth*0.375);
+        int startX = (int) Math.round(currentScreenWidth*0.10);
         int startY = (int) Math.round(currentScreenHeight*0.58);
         int startW = (int) Math.round(currentScreenWidth*0.25);
         int startH = (int) Math.round(currentScreenHeight*0.25);
@@ -112,6 +136,7 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         pButton.add(bQuit);
 
         //frame add
+        window.setContentPane(new JLabel(icon));
         window.add(pTitle);
         window.add(pButton);
         window.setVisible(true);
@@ -167,6 +192,18 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         //frame add
         Hwindow.setVisible(false);
     }
+    
+    public BufferedImage resize(BufferedImage img, int newW, int newH) { 
+        Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
+        BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g2d = dimg.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+
+        return dimg;
+    }
+    
     
     public JFrame getMainWindow() { return this.window; }
 
