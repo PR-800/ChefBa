@@ -18,7 +18,7 @@ public class Item_Squid extends SuperObject {
     public Item_Squid() {
         name = "squid";
         try {
-            imageSquid = ImageIO.read(getClass().getResourceAsStream("/res/items/anemone.png"));
+            imageSquid = ImageIO.read(getClass().getResourceAsStream("/res/items/2squid.png"));
         } catch (IOException ex) {
             Logger.getLogger(Item_Squid.class.getName()).log(Level.SEVERE, null, ex);
         }

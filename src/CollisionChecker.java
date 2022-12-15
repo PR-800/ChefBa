@@ -80,25 +80,45 @@ public class CollisionChecker {
                     case "up":
                         entity.solidArea.y -= entity.speed;
                         if (entity.solidArea.intersects(gp.obj[i].solidArea)){
-                            System.out.println("up");
+                            if (gp.obj[i].collision == true){
+                                entity.collisionOn = true;
+                            }
+                            if (player == true){
+                                indexShark = i;
+                            }
                         }
                         break;
                     case "down":
                         entity.solidArea.y += entity.speed;
                         if (entity.solidArea.intersects(gp.obj[i].solidArea)){
-                            System.out.println("down");
+                            if (gp.obj[i].collision == true){
+                                entity.collisionOn = true;
+                            }
+                            if (player == true){
+                                indexShark = i;
+                            }
                         }
                         break;
                     case "left":
                         entity.solidArea.x -= entity.speed;
                         if (entity.solidArea.intersects(gp.obj[i].solidArea)){
-                            System.out.println("left");
+                            if (gp.obj[i].collision == true){
+                                entity.collisionOn = true;
+                            }
+                            if (player == true){
+                                indexShark = i;
+                            }
                         }
                         break;
                     case "right":
                         entity.solidArea.x += entity.speed;
                         if (entity.solidArea.intersects(gp.obj[i].solidArea)){
-                            System.out.println("right");
+                            if (gp.obj[i].collision == true){
+                                entity.collisionOn = true;
+                            }
+                            if (player == true){
+                                indexShark = i;
+                            }
                         }
                         break;
                 }
