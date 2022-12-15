@@ -24,6 +24,11 @@ public class Player extends Entity{
     public final int screenX;
     public final int screenY;
     
+    int numSquid = 0;
+    int numAnemone = 0;
+    int numSeagrass1 = 0;
+    int numSeagrass2 = 0;
+    
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
@@ -98,6 +103,8 @@ public class Player extends Entity{
             
             // check obj collision
             int objIndex = gp.cChecker.checkObject(this, true);
+            int item1Index = gp.cChecker.checkItem1(this, true);
+            pickUpItem(item1Index);
             
             //If Collision is False, Player can move  
             if(collisionOn == false){  
@@ -246,4 +253,26 @@ public class Player extends Entity{
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
         
     }
+    
+    public void pickUpItem(int i) {
+        
+        if (i != 999) {
+            
+            String item1Name = gp.item1[i].name;
+//            String item2Name = gp.item2[i].name;
+            
+            switch(item1Name) {
+                case "squid":
+                    numSquid++;
+                    gp.item1[i] = null;
+                    System.out.println("Squid : " + numSquid);
+                    break;
+            }
+        }
+        
+    }
+    
+    
+    
+    
 }

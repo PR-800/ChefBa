@@ -38,70 +38,71 @@ public class AssetSetter {
     }
     
         public void setItemSquid() {
-        gp.obj3[0] = new Item_Squid();
-        gp.obj3[0].worldX = 80*gp.tileSize;
-        gp.obj3[0].worldY = 8*gp.tileSize;
+        gp.item1[0] = new Item_Squid();
+        gp.item1[0].worldX = 80*gp.tileSize;
+        gp.item1[0].worldY = 8*gp.tileSize;
         
-        gp.obj3[1] = new Item_Squid();
-        gp.obj3[1].worldX = 20*gp.tileSize;
-        gp.obj3[1].worldY = 40*gp.tileSize;
+        gp.item1[1] = new Item_Squid();
+        gp.item1[1].worldX = 20*gp.tileSize;
+        gp.item1[1].worldY = 40*gp.tileSize;
         
-        gp.obj3[2] = new Item_Squid();
-        gp.obj3[2].worldX = gp.tileSize;
-        gp.obj3[2].worldY = gp.tileSize;
+        gp.item1[2] = new Item_Squid();
+        gp.item1[2].worldX = 7*gp.tileSize;
+        gp.item1[2].worldY = 12*gp.tileSize;
         
-        gp.obj3[3] = new Item_Squid();
-        gp.obj3[3].worldX = gp.tileSize;
-        gp.obj3[3].worldY = gp.tileSize;
+        gp.item1[3] = new Item_Squid();
+        gp.item1[3].worldX = 12*gp.tileSize;
+        gp.item1[3].worldY = 12*gp.tileSize;
         
-        gp.obj3[4] = new Item_Squid();
-        gp.obj3[4].worldX = gp.tileSize;
-        gp.obj3[4].worldY = gp.tileSize;
+        gp.item1[4] = new Item_Squid();
+        gp.item1[4].worldX = gp.tileSize;
+        gp.item1[4].worldY = gp.tileSize;
         
-        gp.obj3[5] = new Item_Squid();
-        gp.obj3[5].worldX = gp.tileSize;
-        gp.obj3[5].worldY = gp.tileSize;
+        gp.item1[5] = new Item_Squid();
+        gp.item1[5].worldX = gp.tileSize;
+        gp.item1[5].worldY = gp.tileSize;
     }
         
         public void setItemAnemone() {
-        gp.obj4[0] = new Item_Anemone();
-        gp.obj4[0].worldX = gp.tileSize;
-        gp.obj4[0].worldY = gp.tileSize;
+        gp.item2[0] = new Item_Anemone();
+        gp.item2[0].worldX = gp.tileSize;
+        gp.item2[0].worldY = gp.tileSize;
         
-        gp.obj4[1] = new Item_Anemone();
-        gp.obj4[1].worldX = gp.tileSize;
-        gp.obj4[1].worldY = gp.tileSize;
+        gp.item2[1] = new Item_Anemone();
+        gp.item2[1].worldX = gp.tileSize;
+        gp.item2[1].worldY = gp.tileSize;
         
-        gp.obj4[2] = new Item_Anemone();
-        gp.obj4[2].worldX = gp.tileSize;
-        gp.obj4[2].worldY = gp.tileSize;
+        gp.item2[2] = new Item_Anemone();
+        gp.item2[2].worldX = gp.tileSize;
+        gp.item2[2].worldY = gp.tileSize;
     }
                 
         public void setItemSeagrass1() {
-        gp.obj5[0] = new Item_Seagrass1();
-        gp.obj5[0].worldX = gp.tileSize;
-        gp.obj5[0].worldY = gp.tileSize;
+        gp.item3[0] = new Item_Seagrass1();
+        gp.item3[0].worldX = gp.tileSize;
+        gp.item3[0].worldY = gp.tileSize;
         
-        gp.obj5[1] = new Item_Seagrass1();
-        gp.obj5[1].worldX = gp.tileSize;
-        gp.obj5[1].worldY = gp.tileSize;
+        gp.item3[1] = new Item_Seagrass1();
+        gp.item3[1].worldX = gp.tileSize;
+        gp.item3[1].worldY = gp.tileSize;
         
-        gp.obj5[2] = new Item_Seagrass1();
-        gp.obj5[2].worldX = gp.tileSize;
-        gp.obj5[2].worldY = gp.tileSize;
+        gp.item3[2] = new Item_Seagrass1();
+        gp.item3[2].worldX = gp.tileSize;
+        gp.item3[2].worldY = gp.tileSize;
+        
     }
         
         public void setItemSeagrass2() {
-        gp.obj6[0] = new Item_Seagrass2();
-        gp.obj6[0].worldX = 3*gp.tileSize;
-        gp.obj6[0].worldY = 12*gp.tileSize;
+        gp.item4[0] = new Item_Seagrass2();
+        gp.item4[0].worldX = 3*gp.tileSize;
+        gp.item4[0].worldY = 12*gp.tileSize;
         
-        gp.obj6[1] = new Item_Seagrass2();
-        gp.obj6[1].worldX = gp.tileSize;
-        gp.obj6[1].worldY = gp.tileSize;
+        gp.item4[1] = new Item_Seagrass2();
+        gp.item4[1].worldX = gp.tileSize;
+        gp.item4[1].worldY = gp.tileSize;
         
-        gp.obj6[1] = new Item_Seagrass2();
-        gp.obj6[1].worldX = gp.tileSize;
-        gp.obj6[1].worldY = gp.tileSize;
+        gp.item4[1] = new Item_Seagrass2();
+        gp.item4[1].worldX = gp.tileSize;
+        gp.item4[1].worldY = gp.tileSize;
     }       
 }

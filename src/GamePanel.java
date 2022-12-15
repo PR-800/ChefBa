@@ -43,6 +43,7 @@ public class GamePanel extends JPanel implements Runnable{
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler(this);
     Thread gameThread;
+    public UI ui = new UI(this);
     
     public CollisionChecker cChecker = new CollisionChecker(this);
     
@@ -51,10 +52,10 @@ public class GamePanel extends JPanel implements Runnable{
     public SuperObject obj[] = new SuperObject[10]; // 10 -> means 10 slots -> can display up to 10 objs in same time // shark
     public SuperObject obj2[] = new SuperObject[10]; // octopus
     
-    public SuperObject obj3[] = new SuperObject[10];
-    public SuperObject obj4[] = new SuperObject[10];
-    public SuperObject obj5[] = new SuperObject[10];
-    public SuperObject obj6[] = new SuperObject[10];
+    public SuperObject item1[] = new SuperObject[10];
+    public SuperObject item2[] = new SuperObject[10];
+    public SuperObject item3[] = new SuperObject[10];
+    public SuperObject item4[] = new SuperObject[10];
     
     public AssetSetter aSetter = new AssetSetter(this);
     
@@ -154,27 +155,29 @@ public class GamePanel extends JPanel implements Runnable{
                 obj2[i].drawOctopus(g2, this);
             }
         }
-        for (int i = 0; i < obj3.length; i++){
-            if (obj3[i] != null){
-                obj3[i].drawSquid(g2, this);
+        for (int i = 0; i < item1.length; i++){
+            if (item1[i] != null){
+                item1[i].drawSquid(g2, this);
             }
         }
-        for (int i = 0; i < obj4.length; i++){
-            if (obj4[i] != null){
-                obj4[i].drawAnemone(g2, this);
+        for (int i = 0; i < item2.length; i++){
+            if (item2[i] != null){
+                item2[i].drawAnemone(g2, this);
             }
         }
-        for (int i = 0; i < obj5.length; i++){
-            if (obj5[i] != null){
-                obj5[i].drawSeagrass1(g2, this);
+        for (int i = 0; i < item3.length; i++){
+            if (item3[i] != null){
+                item3[i].drawSeagrass1(g2, this);
             }
         }
-        for (int i = 0; i < obj6.length; i++){
-            if (obj6[i] != null){
-                obj6[i].drawSeagrass2(g2, this);
+        for (int i = 0; i < item4.length; i++){
+            if (item4[i] != null){
+                item4[i].drawSeagrass2(g2, this);
             }
         }
         /////////////////////////////
+        
+        ui.draw(g2);
         
         player.draw(g2);      
         

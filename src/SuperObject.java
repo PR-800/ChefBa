@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 public class SuperObject { // declare variable of obj
     public BufferedImage imageShark, imageOctopus;
     public BufferedImage imageSquid, imageAnemone, imageSeagrass1, imageSeagrass2 ; //Items
-    public String name, name2;
+    public String name;
     public boolean collision = false;
     public int worldX, worldY;
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
