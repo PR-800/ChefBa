@@ -9,7 +9,7 @@ public class UI {
     Font arial_40;
     Font maruMonica;
     
-    BufferedImage squidImage;
+    BufferedImage squidImage, anemoneImage;
     
     public int slotCol = 0;
     public int slotRow = 0;
@@ -21,6 +21,10 @@ public class UI {
         
         Item_Squid squid = new Item_Squid();
         squidImage = squid.imageSquid;  //name form Superobj
+        
+        Item_Anemone anemone = new Item_Anemone();
+        anemoneImage = anemone.imageAnemone;
+        
     }
     
     public void draw(Graphics2D g2) {
@@ -30,6 +34,7 @@ public class UI {
         g2.setColor(Color.white);
         g2.drawImage(squidImage, gp.tileSize/2, gp.tileSize/2, gp.tileSize, gp.tileSize, null);
         g2.drawString("x " + gp.player.numSquid, 100, 75);
+        g2.drawImage(anemoneImage, gp.tileSize/2, 3*gp.tileSize/2, gp.tileSize, gp.tileSize, null);
         
         if (gp.gameState == gp.playState) {
             
