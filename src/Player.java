@@ -29,6 +29,10 @@ public class Player extends Entity{
     int numSeagrass1 = 0;
     int numSeagrass2 = 0;
     
+    boolean isJumping = false;
+    int jumpCounter = 0;
+    double falling = 0.0;
+    
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
@@ -40,11 +44,11 @@ public class Player extends Entity{
         System.out.println(gp.screenWidth);
         
         solidArea = new Rectangle();
-        solidArea.x = 17;
+        solidArea.x = 20;
         solidArea.y = 25;
-        solidArea.width = 28;
-        solidArea.height= 38;
-        hitBoxX = new Rectangle(17, 25, 34, 28);
+        solidArea.width = 40;
+        solidArea.height= 58;
+        hitBoxX = new Rectangle(15, 30, 55, 35);
         
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
@@ -80,7 +84,30 @@ public class Player extends Entity{
     public void setJump(float jump) { this.jump = jump; }
     
     public void update() throws InterruptedException {
-        if(keyH.upPressed == true || keyH.leftPressed == true || keyH.rightPressed == true){   
+        
+        if (isJumping) {
+                jumpCounter++;
+                if (jumpCounter < 50) {             //time floating
+                    if (!topHit) {
+                        worldY -= speed *3/2;
+                    }
+                    else if (topHit || leftHit || rightHit) {
+                        jumpCounter = 0;
+                        isJumping = false;
+                    }
+                } else {
+                    jumpCounter = 0;
+                    isJumping = false;
+                }
+            } else if (!bottomHit) {
+                worldY += speed *7/4;
+                falling += 0.00;
+//                System.out.println(falling);
+            } else {
+                falling = 0;
+            }
+        
+        if(keyH.upPressed == true || keyH.leftPressed == true || keyH.rightPressed == true){ 
             if((keyH.upPressed == true) && (keyH.leftPressed == true) ) {
                 direction = "upleft";
             }
@@ -115,10 +142,13 @@ public class Player extends Entity{
             pickUpItem4(item4Index);
             
             
+            
+            
+            
                     if (keyH.upPressed){
                         direction = "up";
-                        if (!topHit) {
-                            worldY -= speed;
+                        if (bottomHit) {
+                            jump();
                         }
                     }
                     if (keyH.downPressed) {
@@ -254,6 +284,12 @@ public class Player extends Entity{
 //                audioOn = false;
 //            }
 //        }
+    }
+    
+    public void jump() {
+        if (!isJumping) {
+            isJumping = true;
+        }
     }
     
     public void draw(Graphics2D g2) {
