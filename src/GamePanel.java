@@ -5,15 +5,18 @@
 
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
-
+import javax.imageio.ImageIO;
 
 /**
  *
  * @author Fluk
  */
+
 public class GamePanel extends JPanel implements Runnable{
     //Screen Settings
     final int originalTileSize = 16;    //16*16 tile
@@ -40,11 +43,13 @@ public class GamePanel extends JPanel implements Runnable{
         
     int FPS = 60;
     
+    BufferedImage img = null;
+    
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler(this);
     Thread gameThread;
     public UI ui = new UI(this);
-    
+      
     public CollisionChecker cChecker = new CollisionChecker(this);
     
     public Player player = new Player(this,keyH);
@@ -66,6 +71,11 @@ public class GamePanel extends JPanel implements Runnable{
     //Set Player defult position
    
     public GamePanel() {
+        try {
+            img = ImageIO.read(getClass().getResourceAsStream("map_all_80.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Item_Seagrass2.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);   //smoother
@@ -143,6 +153,8 @@ public class GamePanel extends JPanel implements Runnable{
         Graphics2D g2 = (Graphics2D)g;
         
         tileM.draw(g2);
+        
+        g2.drawImage(img,player.screenX-player.worldX, player.screenY-player.worldY, worldWidth,worldHeight,null);
         
         /////// put Item//////////
         for (int i = 0; i < obj.length; i++){
