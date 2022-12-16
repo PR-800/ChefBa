@@ -15,6 +15,8 @@ import javax.imageio.ImageIO;
 import java.awt.Font;
 import static javax.swing.text.StyleConstants.Size;
 import java.awt.event.*;
+import java.io.IOException;
+import javax.sound.sampled.*;
 
 public class KillShark implements MouseListener{
     private static JFrame frMonster;
@@ -34,7 +36,7 @@ public class KillShark implements MouseListener{
         lbShark.addMouseListener(this);
         tShark = new Thread(lbShark);
         
-        imgSea1 = new ImageIcon("D:\\_second_year\\OOP_Project\\ChefBa\\src\\objects\\sea.jpg");
+        imgSea1 = new ImageIcon(getClass().getResource("/objects/sea.jpg"));
         imgSea2 = new ImageIcon(imgSea1.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH));
         lbSea = new JLabel(imgSea2);
         lbCount.setFont(new Font("Arial", 1, 28));
@@ -71,6 +73,17 @@ public class KillShark implements MouseListener{
     
     public synchronized void mouseClicked(MouseEvent ev){
         if (countdown > 0){
+            try {
+                Clip clip = AudioSystem.getClip();
+                AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                Main.class.getResourceAsStream("/sound/sword.wav"));
+                clip.open(inputStream);
+                clip.start();
+            } 
+            catch (Exception e) {
+                System.err.println(e.getMessage());
+          }
+            
             lbCount.setText("You remain _" + countdown + "_ times.");
             this.setCountdown(countdown);
             countdown--;
@@ -94,8 +107,8 @@ public class KillShark implements MouseListener{
     public static void setMonFrame(JFrame frMonster){
         KillShark.frMonster = frMonster;
     }
-//    public static void main(String[] args) {
-//        new KillShark();
-//    }
+    public static void main(String[] args) {
+        new KillShark();
+    }
     
 }

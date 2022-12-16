@@ -20,7 +20,7 @@ public class DeadShark {
     
     public DeadShark(){
         frDeadShark = new JFrame();
-        imgDeadShark1 = new ImageIcon("D:\\_second_year\\OOP_Project\\ChefBa\\src\\objects\\deadShark.jpg");
+        imgDeadShark1 = new ImageIcon(getClass().getResource("/objects/deadShark.jpg"));
         imgDeadShark2 = new ImageIcon(imgDeadShark1.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH));
         lbDeadShark = new JLabel(imgDeadShark2);
         lbWin = new JLabel("You Win !");

@@ -199,8 +199,4 @@ public class CollisionChecker {
         return indexSquid;
     }
 
-    
-    
-    
-    
 }
