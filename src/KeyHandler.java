@@ -56,7 +56,7 @@ public class KeyHandler implements KeyListener {
             int skip = JOptionPane.showConfirmDialog(null, "Exit to Main Menu", "Confirm Action", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(skip == JOptionPane.YES_OPTION) {
                 int confirm = JOptionPane.showConfirmDialog(null, "This action will abandon your current stage and restart the game, are you sure ?", "Confirm Action", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if(skip == JOptionPane.YES_OPTION) {
+                if(confirm == JOptionPane.YES_OPTION) {
                     JFrame gpFrame = (JFrame) gp.getTopLevelAncestor();  //get JFrame
                     gpFrame.dispose();
                     main.getMainFrame().setVisible(true);

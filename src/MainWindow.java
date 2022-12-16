@@ -51,10 +51,6 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
     public BufferedImage bg = null; 
     public Image image;
     public ImageIcon icon;
-    
-    //check if game is running
-    MainGame game;
-    public int gameCheck = 0;
 
     public MainWindow() {     
         //set game invisible
@@ -226,16 +222,9 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
             case 2 -> url = "/background/cutscene2.png";
             case 3 -> {
                 reScene();
-                if(gameCheck == 0) {
-                    window.dispose();
-                    Cwindow.dispose();
-                    game = new MainGame();    //Skip to gameplay
-                    gameCheck = 1;
-                }
-                else {
-                    game.getGameFrame();
-                }
-                
+                new MainGame();    //Skip to gameplay
+                window.dispose();
+                Cwindow.dispose();
             }
             default -> { url = "/background/cutscene1.png"; }
         }
