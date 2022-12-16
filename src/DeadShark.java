@@ -11,6 +11,7 @@ import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+import javax.sound.sampled.*;
 
 public class DeadShark {
     private JFrame frDeadShark;
@@ -43,9 +44,20 @@ public class DeadShark {
         int y = (screenSize.height - frDeadShark.getHeight())/2;
         frDeadShark.setLocation(x, y);
         
-        frDeadShark.setSize(415, 430);
+        frDeadShark.setSize(414, 430);
         frDeadShark.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frDeadShark.setVisible(true);
+        
+        try {
+            Clip clip = AudioSystem.getClip();
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+            Main.class.getResourceAsStream("/sound/win.wav"));
+            clip.open(inputStream);
+            clip.start();
+            } 
+        catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
         
     }
 //    public static void main(String[] args) {

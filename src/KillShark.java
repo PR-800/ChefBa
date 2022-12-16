@@ -66,6 +66,17 @@ public class KillShark implements MouseListener{
         frMonster.setSize(415, 430);
         frMonster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        try {
+            Clip clip = AudioSystem.getClip();
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+            Main.class.getResourceAsStream("/sound/wave.wav"));
+            clip.open(inputStream);
+            clip.start();
+        } 
+        catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        
         tClock.start();
         tShark.start();
         
@@ -82,7 +93,7 @@ public class KillShark implements MouseListener{
             } 
             catch (Exception e) {
                 System.err.println(e.getMessage());
-          }
+            }
             
             lbCount.setText("You remain _" + countdown + "_ times.");
             this.setCountdown(countdown);
@@ -107,8 +118,8 @@ public class KillShark implements MouseListener{
     public static void setMonFrame(JFrame frMonster){
         KillShark.frMonster = frMonster;
     }
-    public static void main(String[] args) {
-        new KillShark();
-    }
+//    public static void main(String[] args) {
+//        new KillShark();
+//    }
     
 }
