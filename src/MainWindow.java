@@ -141,7 +141,7 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         //audio
         try {
             Clip bgm = AudioSystem.getClip();
-            AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getClassLoader().getResource("bgm.wav"));
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/sound/bgm.wav"));
             bgm.open(inputStream);    
             if (audioOn == false) {
                 audioOn = true;
@@ -149,7 +149,7 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
                 bgm.loop(bgm.LOOP_CONTINUOUSLY);
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         
         // **Cutscene** window
@@ -176,6 +176,7 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
            
         //frame add
         Cwindow.add(pPic);
+        Cwindow.addKeyListener(this);
         Cwindow.setVisible(false);
         
         // **How to play** window
