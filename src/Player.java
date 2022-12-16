@@ -103,6 +103,9 @@ public class Player extends Entity{
             
             // check obj collision
             int objIndex = gp.cChecker.checkObject(this, true);
+            killMonster(objIndex);
+            
+            // check item collision
             int item1Index = gp.cChecker.checkItem1(this, true);
             pickUpItem(item1Index);
             
@@ -252,6 +255,13 @@ public class Player extends Entity{
 
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
         
+    }
+    
+    public void killMonster(int index){
+        if (index != 999){
+            new KillShark();
+            gp.obj[index] = null;
+        }
     }
     
     public void pickUpItem(int i) {

@@ -12,15 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/GamePanel.java</file>
-            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/AssetSetter.java</file>
-            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/MainGame.java</file>
-            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/SuperObject.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/KillShark.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/DeadPlayer.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/DeadShark.java</file>
             <file>file:/D:/_second_year/OOP_Project/ChefBa/src/CollisionChecker.java</file>
-            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/Entity.java</file>
-            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/OBJ_Octopus.java</file>
-            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/Item_Squid.java</file>
-            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/Player.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/Clock.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/SharkMove.java</file>
         </group>
     </open-files>
 </project-private>
