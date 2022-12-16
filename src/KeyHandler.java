@@ -6,6 +6,8 @@
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,10 +16,12 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener {
     
     GamePanel gp;
+    MainWindow main = new MainWindow();
     public boolean upPressed, downPressed, leftPressed, rightPressed;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
+        main.getMainFrame().dispose();
     }
     
     @Override
@@ -47,6 +51,17 @@ public class KeyHandler implements KeyListener {
             else if (gp.gameState == gp.pauseState) {
                 gp.gameState = gp.playState;
             }
+        }
+        if(code == KeyEvent.VK_ESCAPE) {
+            int skip = JOptionPane.showConfirmDialog(null, "Exit to Main Menu", "Confirm Action", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(skip == JOptionPane.YES_OPTION) {
+                int confirm = JOptionPane.showConfirmDialog(null, "This action will abandon your current stage and restart the game, are you sure ?", "Confirm Action", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if(skip == JOptionPane.YES_OPTION) {
+                    JFrame gpFrame = (JFrame) gp.getTopLevelAncestor();  //get JFrame
+                    gpFrame.dispose();
+                    main.getMainFrame().setVisible(true);
+                }
+            }                      
         }
     }
 

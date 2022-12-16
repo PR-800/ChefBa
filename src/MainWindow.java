@@ -12,8 +12,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 import javax.swing.*;
@@ -32,8 +30,9 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
     public JLabel lPic;
     public String url;
     public static int count = 1;
-    public ImageIcon cs;
-    public Image img, newimg;
+    public BufferedImage cs = null;
+    public Image imageCS;
+    public ImageIcon iconCS;
     
     //How to play
     public JFrame Hwindow;
@@ -47,17 +46,18 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
     
     //Audio
     public static boolean audioOn = false;
-    
-    //Game state
-    public int gameState;
-    public final int playState = 1;
-    
-    //Background
-    public BufferedImage bg = null; 
 
-    public MainWindow() {      
-        
-        gameState = 1;
+    //Menu background
+    public BufferedImage bg = null; 
+    public Image image;
+    public ImageIcon icon;
+    
+    //check if game is running
+    MainGame game;
+    public int gameCheck = 0;
+
+    public MainWindow() {     
+        //set game invisible
         
         //set fullscreen
         environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -71,6 +71,7 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         window.setLayout(null);
         window.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         window.setUndecorated(true);
+        window.setFocusable(true);
         
         //background
         try {
@@ -78,8 +79,8 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        Image image = bg.getScaledInstance(currentScreenWidth, currentScreenHeight, Image.SCALE_SMOOTH);
-        ImageIcon icon = new ImageIcon(image);
+        image = bg.getScaledInstance(currentScreenWidth, currentScreenHeight, Image.SCALE_SMOOTH);
+        icon = new ImageIcon(image);
         
         //font
         int titleFontSize = (int) Math.round(currentScreenWidth*0.0875);
@@ -164,19 +165,21 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         //picture
         pPic = new JPanel();
         pPic.setBackground(Color.BLACK);
-        url = "cg1.png";
-        cs = new ImageIcon(getClass().getResource(url));
-        img = cs.getImage(); // transform it 
-        newimg = img.getScaledInstance(currentScreenWidth, currentScreenHeight,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-        cs = new ImageIcon(newimg);
+        url = "/background/cutscene1.png";
+        try {
+            cs = ImageIO.read(getClass().getResourceAsStream(url));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        imageCS = cs.getScaledInstance(currentScreenWidth, currentScreenHeight, Image.SCALE_SMOOTH);
+        iconCS = new ImageIcon(imageCS);
         lPic = new JLabel();
-        lPic.setIcon(cs);
+        lPic.setIcon(iconCS);
         lPic.addMouseListener(this);
         pPic.add(lPic);
            
         //frame add
         Cwindow.add(pPic);
-        Cwindow.addKeyListener(this);
         Cwindow.setVisible(false);
         
         // **How to play** window
@@ -193,26 +196,14 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         Hwindow.setVisible(false);
     }
     
-    public BufferedImage resize(BufferedImage img, int newW, int newH) { 
-        Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
-        BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
-
-        Graphics2D g2d = dimg.createGraphics();
-        g2d.drawImage(tmp, 0, 0, null);
-        g2d.dispose();
-
-        return dimg;
-    }
+    public JFrame getMainFrame() { return this.window; }
     
-    
-    public JFrame getMainWindow() { return this.window; }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(bStart)) {   
             reScene();
             Cwindow.setVisible(true);
-            window.setVisible(false);
+            window.dispose();
         }
         if (e.getSource().equals(bHow)) {
             System.exit(0);
@@ -221,44 +212,41 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
             System.exit(0);
         }
     }  
-    
-    public void update() {
-        if(gameState == 1) {
-            
-        }
-        if(gameState == 0) {
-            
-        }
-    }
-    
+
     public void reScene() {
         count = 0;
-        url = "cg1.png";
+        url = "/background/cutscene1.png";
         nextScene();
     }
     
     public void nextScene() {
         count++;
         switch (count) {
-            case 1 -> url = "cg1.png";
-            case 2 -> url = "cg2.png";
-            case 3 -> url = "cg3.png";
-            case 4 -> url = "cg4.png";
-            case 5 -> url = "cg5.png";
-            case 6 -> url = "cg6.png";
-            case 7 -> {
+            case 1 -> url = "/background/cutscene1.png";
+            case 2 -> url = "/background/cutscene2.png";
+            case 3 -> {
                 reScene();
-                new MainGame();    //Skip to gameplay
-                window.setVisible(false);
-                Cwindow.setVisible(false);
+                if(gameCheck == 0) {
+                    window.dispose();
+                    Cwindow.dispose();
+                    game = new MainGame();    //Skip to gameplay
+                    gameCheck = 1;
+                }
+                else {
+                    game.getGameFrame();
+                }
+                
             }
-            default -> { url = "cg1.png"; }
+            default -> { url = "/background/cutscene1.png"; }
         }
-        cs = new ImageIcon(getClass().getResource(url));
-        img = cs.getImage(); // transform it 
-        newimg = img.getScaledInstance(currentScreenWidth, currentScreenHeight,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-        cs = new ImageIcon(newimg);
-        lPic.setIcon(cs);
+        try {
+            cs = ImageIO.read(getClass().getResourceAsStream(url));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        imageCS = cs.getScaledInstance(currentScreenWidth, currentScreenHeight, Image.SCALE_SMOOTH);
+        iconCS = new ImageIcon(imageCS);
+        lPic.setIcon(iconCS);
     }
 
     @Override public void mouseClicked(MouseEvent e) { nextScene(); }
@@ -268,31 +256,15 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
     @Override public void mouseEntered(MouseEvent e) {}
     @Override public void mouseExited(MouseEvent e) {}
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case 10 -> { //enter
-                int skip = JOptionPane.showConfirmDialog(null, "Skip cutscene", "Confirm Action", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if(skip == JOptionPane.YES_OPTION) {
-                    reScene();
-                    new MainGame();    //Skip to gameplay
-                    window.setVisible(false);
-                    Cwindow.setVisible(false);
-                }                      
-            }
-            case 27 -> { //esc
-                int skip = JOptionPane.showConfirmDialog(null, "Go to Main Menu", "Confirm Action", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if(skip == JOptionPane.YES_OPTION) {
-                    reScene();
-                    window.setVisible(true);
-                    Cwindow.setVisible(false);
-                }                      
-            }
-            default -> nextScene();
-        }
-//        System.out.println(e.getKeyCode());
-    }
-    
     @Override public void keyTyped(KeyEvent e) {}
+
+    @Override public void keyPressed(KeyEvent e) {
+        int code = e.getKeyCode();
+        if(code == KeyEvent.VK_SPACE || code == KeyEvent.VK_ENTER) {
+            nextScene();
+        }
+    }
+
     @Override public void keyReleased(KeyEvent e) {}
+
 }
