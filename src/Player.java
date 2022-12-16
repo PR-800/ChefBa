@@ -88,6 +88,7 @@ public class Player extends Entity{
         if (isJumping) {
                 jumpCounter++;
                 if (jumpCounter < 50) {             //time floating
+                    audioOn = false;
                     if (!topHit) {
                         worldY -= speed *3/2;
                     }
@@ -140,15 +141,22 @@ public class Player extends Entity{
             pickUpItem2(item2Index);
             int item4Index = gp.cChecker.checkItem4(this, true);
             pickUpItem4(item4Index);
-            
-            
-            
-            
-            
+                  
                     if (keyH.upPressed){
                         direction = "up";
                         if (bottomHit) {
                             jump();
+                                try {
+                                Clip bgm = AudioSystem.getClip();
+                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
+                                bgm.open(inputStream);
+                                if (audioOn == false) {
+                                    audioOn = true;
+                                    bgm.start(); 
+                                }
+                            } catch (Exception e) {
+                                System.out.println(e);
+                            }
                         }
                     }
                     if (keyH.downPressed) {
@@ -159,12 +167,26 @@ public class Player extends Entity{
                     }
                     if (keyH.rightPressed) {
                         direction = "right";
+                        if (isJumping) {
+                            directionImage = "up";
+                        }
+                        else {
+                            directionImage = "right";
+                        }
+                        
                         if (!rightHit) {
                             worldX += speed;
                         }
                     }
                     if (keyH.leftPressed) {
                         direction = "left";
+                        if (isJumping) {
+                            directionImage = "down";
+                        }
+                        else {
+                            directionImage = "left"; 
+                        }
+                           
                         if (!leftHit) {
                             worldX -= speed;
                         }
@@ -173,89 +195,6 @@ public class Player extends Entity{
             
             //If Collision is False, Player can move  
             if(collisionOn == false){
-//                switch(direction){
-//                    case "up":  
-//                        jump+=time;
-//                        if (jump <= 11.0f) {
-//                            worldY -= speed*2;
-//                            try {
-//                                Clip bgm = AudioSystem.getClip();
-//                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
-//                                bgm.open(inputStream);
-//                                if (audioOn == false) {
-//                                    audioOn = true;
-//                                    bgm.start(); 
-//                                }
-//                            } catch (Exception e) {
-//                                System.out.println(e);
-//                            }
-//                            break;
-//                        }
-//                        break;
-//                    case "left" :
-//                        worldX -= speed;
-//                        directionImage = "left";
-//                        break;
-//                    case "right":
-//                        worldX += speed;
-//                        directionImage = "right";
-//                        break;
-//                    case "upleft":
-//                        jump+=time;
-//                        checkJump = 1;
-//                        if (jump <= 11.0f) {
-//                            worldX -= speed*1.5;
-//                            worldY -= speed*2;
-//                            directionImage = "left";
-//                            try {
-//                                Clip bgm = AudioSystem.getClip();
-//                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
-//                                bgm.open(inputStream);
-//                                if (audioOn == false) {
-//                                    audioOn = true;
-//                                    bgm.start(); 
-//                                }
-//                            } catch (Exception e) {
-//                                System.out.println(e);
-//                            }
-//                            break;
-//                        }
-//                    case "upright":
-//                        jump+=time;
-//                        checkJump = 1;
-//                        if (jump <= 11.0f) {
-//                            worldX += speed*1.5;
-//                            worldY -= speed*2;
-//                            directionImage = "right";
-//                            try {
-//                                Clip bgm = AudioSystem.getClip();
-//                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
-//                                bgm.open(inputStream);
-//                                if (audioOn == false) {
-//                                    audioOn = true;
-//                                    bgm.start(); 
-//                                }
-//                            } catch (Exception e) {
-//                                System.out.println(e);
-//                            }
-//                            break;
-//                        }          
-//                }
-//                if(checkJump == 1){  
-//                    switch(direction){
-//                        case "upleft" :
-//                            worldX -= speed*1.5;
-//                            worldY += speed*2;
-//                            directionImage = "left";
-//                            break;
-//                        case "upright":
-//                            worldX += speed*1.5;
-//                            worldY += speed*2;
-//                            directionImage = "right";
-//                            break;
-//                    }
-//                }
-
                 spriteCounter++;
                 if (spriteCounter > 10) {
                     if (spriteNum == 1) {
@@ -298,7 +237,7 @@ public class Player extends Entity{
         
         switch (directionImage) {
             case "up":
-                image = walkR1;
+                image = walkR2;
                 break;
             case "left":
                 if (spriteNum == 1) {
@@ -317,7 +256,7 @@ public class Player extends Entity{
                 }
                 break;
             case "down":
-                image = walkR2;
+                image = walkL2;
                 break;
         }
 
