@@ -43,7 +43,8 @@ public class Player extends Entity{
         solidArea.x = 17;
         solidArea.y = 25;
         solidArea.width = 28;
-        solidArea.height= 34;
+        solidArea.height= 38;
+        hitBoxX = new Rectangle(17, 25, 34, 28);
         
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
@@ -107,78 +108,109 @@ public class Player extends Entity{
             
             // check item collision
             int item1Index = gp.cChecker.checkItem1(this, true);
-            pickUpItem(item1Index);
+            pickUpItem1(item1Index);
+            int item2Index = gp.cChecker.checkItem2(this, true);
+            pickUpItem2(item2Index);
+            int item4Index = gp.cChecker.checkItem4(this, true);
+            pickUpItem4(item4Index);
+            
+            
+                    if (keyH.upPressed){
+                        direction = "up";
+                        if (!topHit) {
+                            worldY -= speed;
+                        }
+                    }
+                    if (keyH.downPressed) {
+                        direction = "down";
+                        if (!bottomHit) {
+                            worldY += speed;
+                        }
+                    }
+                    if (keyH.rightPressed) {
+                        direction = "right";
+                        if (!rightHit) {
+                            worldX += speed;
+                        }
+                    }
+                    if (keyH.leftPressed) {
+                        direction = "left";
+                        if (!leftHit) {
+                            worldX -= speed;
+                        }
+                    }
+            
             
             //If Collision is False, Player can move  
-            if(collisionOn == false){  
-                switch(direction){
-                    case "up":  
-                        jump+=time;
-                        if (jump <= 11.0f) {
-                            worldY -= speed*2;
-                            try {
-                                Clip bgm = AudioSystem.getClip();
-                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
-                                bgm.open(inputStream);
-                                if (audioOn == false) {
-                                    audioOn = true;
-                                    bgm.start(); 
-                                }
-                            } catch (Exception e) {
-                                System.out.println(e);
-                            }
-                            break;
-                        }
-                        break;
-                    case "left" :
-                        worldX -= speed;
-                        directionImage = "left";
-                        break;
-                    case "right":
-                        worldX += speed;
-                        directionImage = "right";
-                        break;
-                    case "upleft":
-                        jump+=time;
-                        checkJump = 1;
-                        if (jump <= 11.0f) {
-                            worldX -= speed*1.5;
-                            worldY -= speed*2;
-                            directionImage = "left";
-                            try {
-                                Clip bgm = AudioSystem.getClip();
-                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
-                                bgm.open(inputStream);
-                                if (audioOn == false) {
-                                    audioOn = true;
-                                    bgm.start(); 
-                                }
-                            } catch (Exception e) {
-                                System.out.println(e);
-                            }
-                            break;
-                        }
-                    case "upright":
-                        jump+=time;
-                        checkJump = 1;
-                        if (jump <= 11.0f) {
-                            worldX += speed*1.5;
-                            worldY -= speed*2;
-                            directionImage = "right";
-                            try {
-                                Clip bgm = AudioSystem.getClip();
-                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
-                                bgm.open(inputStream);
-                                if (audioOn == false) {
-                                    audioOn = true;
-                                    bgm.start(); 
-                                }
-                            } catch (Exception e) {
-                                System.out.println(e);
-                            }
-                            break;
-                        }          
-                }
+            if(collisionOn == false){
+//                switch(direction){
+//                    case "up":  
+//                        jump+=time;
+//                        if (jump <= 11.0f) {
+//                            worldY -= speed*2;
+//                            try {
+//                                Clip bgm = AudioSystem.getClip();
+//                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
+//                                bgm.open(inputStream);
+//                                if (audioOn == false) {
+//                                    audioOn = true;
+//                                    bgm.start(); 
+//                                }
+//                            } catch (Exception e) {
+//                                System.out.println(e);
+//                            }
+//                            break;
+//                        }
+//                        break;
+//                    case "left" :
+//                        worldX -= speed;
+//                        directionImage = "left";
+//                        break;
+//                    case "right":
+//                        worldX += speed;
+//                        directionImage = "right";
+//                        break;
+//                    case "upleft":
+//                        jump+=time;
+//                        checkJump = 1;
+//                        if (jump <= 11.0f) {
+//                            worldX -= speed*1.5;
+//                            worldY -= speed*2;
+//                            directionImage = "left";
+//                            try {
+//                                Clip bgm = AudioSystem.getClip();
+//                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
+//                                bgm.open(inputStream);
+//                                if (audioOn == false) {
+//                                    audioOn = true;
+//                                    bgm.start(); 
+//                                }
+//                            } catch (Exception e) {
+//                                System.out.println(e);
+//                            }
+//                            break;
+//                        }
+//                    case "upright":
+//                        jump+=time;
+//                        checkJump = 1;
+//                        if (jump <= 11.0f) {
+//                            worldX += speed*1.5;
+//                            worldY -= speed*2;
+//                            directionImage = "right";
+//                            try {
+//                                Clip bgm = AudioSystem.getClip();
+//                                AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
+//                                bgm.open(inputStream);
+//                                if (audioOn == false) {
+//                                    audioOn = true;
+//                                    bgm.start(); 
+//                                }
+//                            } catch (Exception e) {
+//                                System.out.println(e);
+//                            }
+//                            break;
+//                        }          
+//                }
 //                if(checkJump == 1){  
 //                    switch(direction){
 //                        case "upleft" :
@@ -209,19 +241,19 @@ public class Player extends Entity{
         }  
         
         gp.cChecker.checkTile(this);
-        if (collisionOn == false) {
-            switch(direction){
-                case "down":
-                    worldY += speed;
-                    break;
-            }
-        }
-        else {
-            if (jump > 11.0f) {
-                setJump(0);
-                audioOn = false;
-            }
-        }
+//        if (collisionOn == false) {
+//            switch(direction){
+//                case "down":
+//                    worldY += speed;
+//                    break;
+//            }
+//        }
+//        else {
+//            if (jump > 11.0f) {
+//                setJump(0);
+//                audioOn = false;
+//            }
+//        }
     }
     
     public void draw(Graphics2D g2) {
@@ -253,8 +285,12 @@ public class Player extends Entity{
                 break;
         }
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize*5/4, gp.tileSize*5/4, null);
         
+        g2.setColor(Color.RED);
+        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+        g2.setColor(Color.GREEN);
+        g2.drawRect(screenX + hitBoxX.x, screenY + hitBoxX.y, hitBoxX.width, hitBoxX.height);
     }
     
     public void killMonster(int index){
@@ -264,12 +300,11 @@ public class Player extends Entity{
         }
     }
     
-    public void pickUpItem(int i) {
+    public void pickUpItem1(int i) {
         
         if (i != 999) {
             
             String item1Name = gp.item1[i].name;
-//            String item2Name = gp.item2[i].name;
             
             switch(item1Name) {
                 case "squid":
@@ -279,7 +314,38 @@ public class Player extends Entity{
                     break;
             }
         }
+    }
+    
+    public void pickUpItem2(int i) {
         
+        if (i != 999) {
+            
+            String item2Name = gp.item2[i].name;
+            
+            switch(item2Name) {
+                case "anemone":
+                    numAnemone++;
+                    gp.item2[i] = null;
+                    System.out.println("Anemone : " + numAnemone);
+                    break;
+            }
+        }
+    }
+    
+    public void pickUpItem4(int i) {
+        
+        if (i != 999) {
+            
+            String item4Name = gp.item4[i].name;
+            
+            switch(item4Name) {
+                case "seagrass2":
+                    numSeagrass2++;
+                    gp.item4[i] = null;
+                    System.out.println("Seagrass : " + numSeagrass2);
+                    break;
+            }
+        }
     }
     
     

@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
  *
  * @author Fluk
  */
+
 public class Entity {
     
     public int worldX, worldY;
@@ -23,9 +24,10 @@ public class Entity {
     public int spriteCounter = 0;
     public int spriteNum = 1;
     
-    public Rectangle solidArea;
+    public Rectangle solidArea, hitBoxX;
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
+    public boolean topHit, bottomHit, leftHit, rightHit;
     
     public static boolean audioOn = false;
     

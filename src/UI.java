@@ -9,7 +9,7 @@ public class UI {
     Font arial_40;
     Font maruMonica;
     
-    BufferedImage squidImage, anemoneImage;
+    BufferedImage squidImage, anemoneImage, seagrass2Image;
     
     public int slotCol = 0;
     public int slotRow = 0;
@@ -25,6 +25,9 @@ public class UI {
         Item_Anemone anemone = new Item_Anemone();
         anemoneImage = anemone.imageAnemone;
         
+        Item_Seagrass2 seagrass2 = new Item_Seagrass2();
+        seagrass2Image = seagrass2.imageSeagrass2;
+        
     }
     
     public void draw(Graphics2D g2) {
@@ -32,9 +35,14 @@ public class UI {
         this.g2 = g2;
         g2.setFont(arial_40);
         g2.setColor(Color.white);
+        
         g2.drawImage(squidImage, gp.tileSize/2, gp.tileSize/2, gp.tileSize, gp.tileSize, null);
-        g2.drawString("x " + gp.player.numSquid, 100, 75);
+        g2.drawString("x " + gp.player.numSquid, 102, 75);
         g2.drawImage(anemoneImage, gp.tileSize/2, 3*gp.tileSize/2, gp.tileSize, gp.tileSize, null);
+        g2.drawString("x " + gp.player.numAnemone, 102, 145);
+        g2.drawImage(seagrass2Image, gp.tileSize/2, 5*gp.tileSize/2, gp.tileSize, gp.tileSize, null);
+        g2.drawString("x " + gp.player.numSeagrass2, 102, 210);
+        
         
         if (gp.gameState == gp.playState) {
             
