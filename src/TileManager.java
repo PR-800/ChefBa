@@ -63,6 +63,7 @@ public class TileManager {
             
             tile[7] = new Tile();
             tile[7].image = ImageIO.read(getClass().getResourceAsStream("water.png"));
+            tile[7].trap = true;
             
             tile[8] = new Tile();
             tile[8].image = ImageIO.read(getClass().getResourceAsStream("vineL.png"));

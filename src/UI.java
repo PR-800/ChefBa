@@ -13,11 +13,12 @@ public class UI {
     
     public int slotCol = 0;
     public int slotRow = 0;
+    int commandNum = 0;
     
     public UI(GamePanel gp) {
         
         this.gp = gp;
-        arial_40 = new Font("Arial", Font.PLAIN, 40);
+        arial_40 = new Font("VCR_OSD_MONO", Font.PLAIN, 40);
         
         Item_Squid squid = new Item_Squid();
         squidImage = squid.imageSquid;  //name form Superobj
@@ -44,11 +45,54 @@ public class UI {
         g2.drawString("x " + gp.player.numSeagrass2, 102, 210);
         
         
-        if (gp.gameState == gp.playState) {
-            
-        }
+        if (gp.gameState == gp.playState) {}
         if (gp.gameState == gp.pauseState) {
             drawPauseScreen();
+        }
+        
+        //GAME OVER STATE
+        if (gp.gameState == gp.gameOverState) {
+            drawGameOverScreen();
+        }
+    }
+    
+    public void drawGameOverScreen() {
+        
+        g2.setColor(new Color(0, 0, 0, 150));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+         
+        int x;
+        int y;
+        String text;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 110f));
+        
+        text = "Game Over";
+        //Shadow
+        g2.setColor(Color.black);
+        x = getXforCenteredText(text);
+        y = gp.tileSize*4;
+        g2.drawString(text, x, y);
+        //Main
+        g2.setColor(Color.white);
+        g2.drawString(text, x-4, y-4);
+        
+        //Restart
+        g2.setFont(g2.getFont().deriveFont(60f));
+        text = "Restart";
+        x = getXforCenteredText(text);
+        y += gp.tileSize*6;
+        g2.drawString(text, x, y);
+        if (commandNum == 0) {
+            g2.drawString(">", x-40, y);
+        }
+        
+        //Quit
+        text = "Quit";
+        x = getXforCenteredText(text);
+        y += 75;
+        g2.drawString(text, x, y);
+        if (commandNum == 1) {
+            g2.drawString("-", x-40, y);
         }
         
     }

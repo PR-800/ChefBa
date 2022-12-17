@@ -462,6 +462,32 @@ public class CollisionChecker {
         } else {
             entity.vineRightHit = false;
         }
+        
+        //Check died
+        if (gp.tileM.tile[topHitPos1].trap || gp.tileM.tile[topHitPos2].trap) {
+            entity.trapTop = true;
+        } else {
+            entity.trapTop = false;
+        }
+
+        if (gp.tileM.tile[bottomHitPos1].trap || gp.tileM.tile[bottomHitPos2].trap) {
+            entity.trapBottom = true;
+        } else {
+            entity.trapBottom = false;
+        }
+
+        if (gp.tileM.tile[leftHitPos1].trap || gp.tileM.tile[leftHitPos2].trap) {
+            entity.trapLeft = true;
+        } else {
+            entity.trapLeft = false;
+        }
+
+        if (gp.tileM.tile[rightHitPos1].trap || gp.tileM.tile[rightHitPos2].trap) {
+            entity.trapRight = true;
+        } else {
+            entity.trapRight = false;
+        }
+        
     }
     
 }

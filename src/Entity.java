@@ -29,6 +29,7 @@ public class Entity {
     public boolean collisionOn = false;
     public boolean topHit, bottomHit, leftHit, rightHit;
     public boolean vineLeftHit = false, vineRightHit = false;
+    public boolean trapTop, trapBottom, trapLeft, trapRight;
     
     public static boolean audioOn = false;
     

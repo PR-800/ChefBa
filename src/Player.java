@@ -238,6 +238,11 @@ public class Player extends Entity{
 //                audioOn = false;
 //            }
 //        }
+        
+        if (trapTop || trapBottom || trapLeft || trapRight) {
+            gp.gameState = gp.gameOverState;
+        }
+
     }
     
     public void jump() {

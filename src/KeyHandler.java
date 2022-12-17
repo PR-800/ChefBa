@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -62,6 +62,38 @@ public class KeyHandler implements KeyListener {
                     main.getMainFrame().setVisible(true);
                 }
             }                      
+        }
+        if (gp.gameState == gp.gameOverState) {
+                gameOverState(code);
+            }
+    }
+    
+    public void gameOverState(int code) {
+        
+        if (code == KeyEvent.VK_W) {
+            gp.ui.commandNum--;
+            if (gp.ui.commandNum < 0) {
+                gp.ui.commandNum = 1;
+            }
+        }
+        if (code == KeyEvent.VK_S) {
+            gp.ui.commandNum++;
+            if (gp.ui.commandNum > 1) {
+                gp.ui.commandNum = 0;
+            }
+        }
+        if (code == KeyEvent.VK_ENTER) {
+            if (gp.ui.commandNum == 0) {
+                //Restart
+                JFrame gpFrame = (JFrame) gp.getTopLevelAncestor();  //get JFrame
+                gpFrame.dispose();
+                main.getMainFrame().setVisible(true);
+                
+            }
+            else if (gp.ui.commandNum == 1) {
+                //Quit
+                System.exit(0);
+            }
         }
     }
 
