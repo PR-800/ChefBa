@@ -38,14 +38,11 @@ public class DeadShark {
         frDeadShark.add(lbWin);
         frDeadShark.add(lbDeadShark);
         
-        ///////////////// CENTER JFRAME TT ////////////////////
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (screenSize.width - frDeadShark.getWidth())/2;
-        int y = (screenSize.height - frDeadShark.getHeight())/2;
-        frDeadShark.setLocation(x, y);
-        
-        frDeadShark.setSize(414, 430);
-        frDeadShark.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frDeadShark.setSize(400, 400);
+        frDeadShark.setResizable(false);
+        frDeadShark.setLocationRelativeTo(null);
+        frDeadShark.setUndecorated(true);
+        frDeadShark.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frDeadShark.setVisible(true);
         
         try {

@@ -56,15 +56,13 @@ public class KillShark implements MouseListener{
         frMonster.add(lbShark);
         frMonster.add(lbSea);
         
-        ///////////////// CENTER JFRAME TT ////////////////////
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (screenSize.width - frMonster.getWidth())/2;
-        int y = (screenSize.height - frMonster.getHeight())/2;
-        frMonster.setLocation(x, y);
-
+        frMonster.setSize(400, 400);
+        frMonster.setResizable(false);
+        frMonster.setLocationRelativeTo(null);
+        
+        frMonster.setUndecorated(true);
+        frMonster.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frMonster.setVisible(true);
-        frMonster.setSize(415, 430);
-        frMonster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         try {
             Clip clip = AudioSystem.getClip();
