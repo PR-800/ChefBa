@@ -26,7 +26,6 @@ public class Player extends Entity{
     
     int numSquid = 0;
     int numAnemone = 0;
-    int numSeagrass1 = 0;
     int numSeagrass2 = 0;
     
     boolean isJumping = false;

@@ -1,13 +1,17 @@
 import java.awt.BasicStroke;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UI {
     
     GamePanel gp;
     Graphics2D g2;
     Font arial_40;
-    Font maruMonica;
+    Font vcr;
     
     BufferedImage squidImage, anemoneImage, seagrass2Image;
     
@@ -18,7 +22,11 @@ public class UI {
     public UI(GamePanel gp) {
         
         this.gp = gp;
-        arial_40 = new Font("VCR_OSD_MONO", Font.PLAIN, 40);
+        
+        InputStream is = getClass().getResourceAsStream("res/font/VCR_OSD_MONO.ttf");
+        try {
+            vcr = Font.createFont(Font.TRUETYPE_FONT, is);
+        } catch (FontFormatException | IOException ex) {}
         
         Item_Squid squid = new Item_Squid();
         squidImage = squid.imageSquid;  //name form Superobj
@@ -34,7 +42,8 @@ public class UI {
     public void draw(Graphics2D g2) {
         
         this.g2 = g2;
-        g2.setFont(arial_40);
+        
+        g2.setFont(g2.getFont().deriveFont(50f));
         g2.setColor(Color.white);
         
         g2.drawImage(squidImage, gp.tileSize/2, gp.tileSize/2, gp.tileSize, gp.tileSize, null);
@@ -83,7 +92,7 @@ public class UI {
         y += gp.tileSize*6;
         g2.drawString(text, x, y);
         if (commandNum == 0) {
-            g2.drawString(">", x-40, y);
+            g2.drawString("->", x-90, y);
         }
         
         //Quit
@@ -92,14 +101,14 @@ public class UI {
         y += 75;
         g2.drawString(text, x, y);
         if (commandNum == 1) {
-            g2.drawString("-", x-40, y);
+            g2.drawString("->", x-90, y);
         }
         
     }
     
     public void drawPauseScreen() {
         
-        g2.setFont(arial_40);
+        g2.setFont(g2.getFont().deriveFont(60f));
         String text = "PAUSED";
         int x = getXforCenteredText(text);
         int y = gp.screenHeight/2;

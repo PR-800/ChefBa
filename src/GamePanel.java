@@ -73,7 +73,7 @@ public class GamePanel extends JPanel implements Runnable{
    
     public GamePanel() {
         try {
-            img = ImageIO.read(getClass().getResourceAsStream("map_all_80.png"));
+            img = ImageIO.read(getClass().getResourceAsStream("map_all.png"));
         } catch (IOException ex) {
             Logger.getLogger(Item_Seagrass2.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -155,7 +155,7 @@ public class GamePanel extends JPanel implements Runnable{
         
         tileM.draw(g2);
         
-        g2.drawImage(img,player.screenX-player.worldX, player.screenY-player.worldY, worldWidth,worldHeight,null);
+        g2.drawImage(img,player.screenX-player.worldX-960, player.screenY-player.worldY-960, worldWidth+1920,worldHeight+1920,null);
         
         /////// put Item//////////
         for (int i = 0; i < obj.length; i++){
@@ -190,9 +190,10 @@ public class GamePanel extends JPanel implements Runnable{
         }
         /////////////////////////////
         
-        ui.draw(g2);
+        player.draw(g2);
         
-        player.draw(g2);      
+        ui.draw(g2);
+           
         
         g2.dispose();
     }
