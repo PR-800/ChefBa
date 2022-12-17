@@ -26,13 +26,14 @@ public class ClockOctopus extends JLabel implements Runnable{
                 this.setText(String.format("%02d Seconds", sec));
                 Dimension sizeClock = this.getPreferredSize();
                 this.setBounds(130, 300, sizeClock.width, sizeClock.height);
+                this.setForeground(Color.white);
 
                 this.setRemainTime(sec);
                 if ((this.getRemainTime() >= 0) && (KillOctopus.getCountDown() <= 0)){ // Win Case
                     state = 1;
                     sec = 0;
                     KillOctopus.getMonFrame().setVisible(false);
-                    new DeadShark();
+                    new DeadOctopus();
                     this.setRemainTime(10);
                     KillOctopus.setCountdown(10);
                     break;

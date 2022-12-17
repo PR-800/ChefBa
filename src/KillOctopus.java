@@ -36,10 +36,11 @@ public class KillOctopus implements MouseListener{
         lbOctopus.addMouseListener(this);
         tOctopus = new Thread(lbOctopus);
         
-        imgSea1 = new ImageIcon(getClass().getResource("/objects/sea.jpg"));
+        imgSea1 = new ImageIcon(getClass().getResource("/objects/smoke.jpg"));
         imgSea2 = new ImageIcon(imgSea1.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH));
         lbSea = new JLabel(imgSea2);
         lbCount.setFont(new Font("Arial", 1, 28));
+        lbCount.setForeground(Color.white);
        
         frMonster.setLayout(null);
         Dimension sizeMon = lbOctopus.getPreferredSize();
@@ -116,8 +117,8 @@ public class KillOctopus implements MouseListener{
     public static void setMonFrame(JFrame frMonster){
         KillOctopus.frMonster = frMonster;
     }
-    public static void main(String[] args) {
-        new KillOctopus();
-    }
+//    public static void main(String[] args) {
+//        new KillOctopus();
+//    }
     
 }
