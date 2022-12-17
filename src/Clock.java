@@ -33,11 +33,17 @@ public class Clock extends JLabel implements Runnable{
                     sec = 0;
                     KillShark.getMonFrame().setVisible(false);
                     new DeadShark();
+                    this.setRemainTime(10);
+                    KillShark.setCountdown(10);
+                    break;
                 }
                 else if ((this.getRemainTime() == 0) && (KillShark.getCountDown() > 0)){ // Lost Case
                     state = 2;
                     KillShark.getMonFrame().setVisible(false);
                     new DeadPlayer(); // change to lost page
+                    this.setRemainTime(10);
+                    KillShark.setCountdown(10);
+                    break;
                 }
                 
                 Thread.sleep(1000);
