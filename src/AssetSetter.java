@@ -40,7 +40,7 @@ public class AssetSetter {
         public void setItemSquid() {
         gp.item1[0] = new Item_Squid();
         gp.item1[0].worldX = 80*gp.tileSize;
-        gp.item1[0].worldY = 8*gp.tileSize;
+        gp.item1[0].worldY = 7*gp.tileSize;
         
         gp.item1[1] = new Item_Squid();
         gp.item1[1].worldX = 20*gp.tileSize;
@@ -69,8 +69,8 @@ public class AssetSetter {
         gp.item2[0].worldY = 12*gp.tileSize;
         
         gp.item2[1] = new Item_Anemone();
-        gp.item2[1].worldX = gp.tileSize;
-        gp.item2[1].worldY = gp.tileSize;
+        gp.item2[1].worldX = 49*gp.tileSize;
+        gp.item2[1].worldY = 28*gp.tileSize;
         
         gp.item2[2] = new Item_Anemone();
         gp.item2[2].worldX = gp.tileSize;

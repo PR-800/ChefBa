@@ -449,6 +449,19 @@ public class CollisionChecker {
         } else {
             entity.rightHit = false;
         }
+        
+        //Climbable
+        if (gp.tileM.tile[leftHitPos1].climbable || gp.tileM.tile[leftHitPos2].climbable) {
+            entity.vineLeftHit = true;
+        } else {
+            entity.vineLeftHit = false;
+        }
+
+        if (gp.tileM.tile[rightHitPos1].climbable || gp.tileM.tile[rightHitPos2].climbable) {
+            entity.vineRightHit = true;
+        } else {
+            entity.vineRightHit = false;
+        }
     }
     
 }

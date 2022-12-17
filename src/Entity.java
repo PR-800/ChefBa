@@ -28,6 +28,7 @@ public class Entity {
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
     public boolean topHit, bottomHit, leftHit, rightHit;
+    public boolean vineLeftHit = false, vineRightHit = false;
     
     public static boolean audioOn = false;
     

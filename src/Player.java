@@ -44,11 +44,11 @@ public class Player extends Entity{
         System.out.println(gp.screenWidth);
         
         solidArea = new Rectangle();
-        solidArea.x = 20;
+        solidArea.x = 18;
         solidArea.y = 25;
         solidArea.width = 40;
-        solidArea.height= 58;
-        hitBoxX = new Rectangle(15, 30, 55, 35);
+        solidArea.height= 57;
+        hitBoxX = new Rectangle(10, 30, 60, 35);
         
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
@@ -87,7 +87,7 @@ public class Player extends Entity{
         
         if (isJumping) {
                 jumpCounter++;
-                if (jumpCounter < 50) {             //time floating
+                if (jumpCounter < 18) {             //time floating     default -> 18
                     audioOn = false;
                     if (!topHit) {
                         worldY -= speed *3/2;
@@ -101,7 +101,8 @@ public class Player extends Entity{
                     isJumping = false;
                 }
             } else if (!bottomHit) {
-                worldY += speed *7/4;
+//                worldY += speed *7/4;
+                worldY += speed *3/2;
                 falling += 0.00;
 //                System.out.println(falling);
             } else {
@@ -179,6 +180,12 @@ public class Player extends Entity{
                         if (!rightHit) {
                             worldX += speed;
                         }
+                        else {
+                            if (vineRightHit) {
+                                worldY += speed/(3/2);
+                                jump();
+                            }
+                        }
                     }
                     if (keyH.leftPressed) {
                         direction = "left";
@@ -191,6 +198,12 @@ public class Player extends Entity{
                            
                         if (!leftHit) {
                             worldX -= speed;
+                        }
+                        else {
+                            if (vineLeftHit) {
+                                worldY += speed/(3/2);
+                                jump();
+                            }
                         }
                     }
             
