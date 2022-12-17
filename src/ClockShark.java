@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
-public class Clock extends JLabel implements Runnable{
+public class ClockShark extends JLabel implements Runnable{
     private int sec = 10;
     private int second;
     private int remainTime;

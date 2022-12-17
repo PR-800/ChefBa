@@ -131,8 +131,10 @@ public class Player extends Entity{
             gp.cChecker.checkTile(this);
             
             // check obj collision
-            int objIndex = gp.cChecker.checkObject(this, true);
-            killMonster(objIndex);
+            int obj1Index = gp.cChecker.checkObject(this, true);
+            killShark(obj1Index);
+            int obj2Index = gp.cChecker.checkObject2(this, true);
+            killOctopus(obj2Index);
             
             // check item collision
             int item1Index = gp.cChecker.checkItem1(this, true);
@@ -268,10 +270,17 @@ public class Player extends Entity{
         g2.drawRect(screenX + hitBoxX.x, screenY + hitBoxX.y, hitBoxX.width, hitBoxX.height);
     }
     
-    public void killMonster(int index){
+    public void killShark(int index){
         if (index != 999){
             new KillShark();
             gp.obj[index] = null;
+        }
+    }
+    
+    public void killOctopus(int index){
+        if (index != 999){
+            new KillOctopus();
+            gp.obj2[index] = null;
         }
     }
     

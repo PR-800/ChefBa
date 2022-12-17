@@ -18,23 +18,23 @@ import java.awt.event.*;
 import java.io.IOException;
 import javax.sound.sampled.*;
 
-public class KillShark implements MouseListener{
+public class KillOctopus implements MouseListener{
     private static JFrame frMonster;
     private JLabel lbCount, lbSea;
     private ImageIcon imgSea1, imgSea2;
-    private SharkMove lbShark;
-    private ClockShark clock;
-    private Thread tClock, tShark;
+    private OctopusMove lbOctopus;
+    private ClockOctopus clock;
+    private Thread tClock, tOctopus;
     private static int countdown = 9;
     
-    public KillShark(){
+    public KillOctopus(){
         frMonster = new JFrame();
-        clock = new ClockShark();
+        clock = new ClockOctopus();
         tClock = new Thread(clock);
         lbCount = new JLabel("Kill Monster 10 times !");
-        lbShark = new SharkMove();
-        lbShark.addMouseListener(this);
-        tShark = new Thread(lbShark);
+        lbOctopus = new OctopusMove();
+        lbOctopus.addMouseListener(this);
+        tOctopus = new Thread(lbOctopus);
         
         imgSea1 = new ImageIcon(getClass().getResource("/objects/sea.jpg"));
         imgSea2 = new ImageIcon(imgSea1.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH));
@@ -42,8 +42,8 @@ public class KillShark implements MouseListener{
         lbCount.setFont(new Font("Arial", 1, 28));
        
         frMonster.setLayout(null);
-        Dimension sizeMon = lbShark.getPreferredSize();
-        lbShark.setBounds(0, 0, sizeMon.width, sizeMon.height);
+        Dimension sizeMon = lbOctopus.getPreferredSize();
+        lbOctopus.setBounds(0, 0, sizeMon.width, sizeMon.height);
         
         Dimension sizeCount = lbCount.getPreferredSize();
         lbCount.setBounds(58, 340, sizeCount.width, sizeCount.height);
@@ -53,7 +53,7 @@ public class KillShark implements MouseListener{
         
         frMonster.add(clock);
         frMonster.add(lbCount);
-        frMonster.add(lbShark);
+        frMonster.add(lbOctopus);
         frMonster.add(lbSea);
         
         frMonster.setSize(400, 400);
@@ -76,7 +76,7 @@ public class KillShark implements MouseListener{
         }
         
         tClock.start();
-        tShark.start();
+        tOctopus.start();
         
     }
     
@@ -104,20 +104,20 @@ public class KillShark implements MouseListener{
     public void mouseReleased(MouseEvent m){}
     
     public static int getCountDown(){
-        return KillShark.countdown;
+        return KillOctopus.countdown;
     }
     public static void setCountdown(int countdown){
-        KillShark.countdown = countdown;
+        KillOctopus.countdown = countdown;
     }
     
     public static JFrame getMonFrame(){
-        return KillShark.frMonster;
+        return KillOctopus.frMonster;
     }
     public static void setMonFrame(JFrame frMonster){
-        KillShark.frMonster = frMonster;
+        KillOctopus.frMonster = frMonster;
     }
-//    public static void main(String[] args) {
-//        new KillShark();
-//    }
+    public static void main(String[] args) {
+        new KillOctopus();
+    }
     
 }

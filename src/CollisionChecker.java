@@ -132,6 +132,74 @@ public class CollisionChecker {
         }
         return indexShark; // if player hit obj will return index of obj
     }
+    
+    public int checkObject2(Entity entity, boolean player){
+        int indexOctopus = 999;
+        
+        // Hit Shark //
+        for (int i = 0; i < gp.obj2.length; i++){
+            if (gp.obj2[i] != null){
+                entity.solidArea.x = entity.worldX + entity.solidArea.x;
+                entity.solidArea.y = entity.worldY + entity.solidArea.y;
+                
+                gp.obj2[i].solidArea.x = gp.obj2[i].worldX + gp.obj2[i].solidArea.x;
+                gp.obj2[i].solidArea.y = gp.obj2[i].worldY + gp.obj2[i].solidArea.y;
+                
+                switch (entity.direction){
+                    case "up":
+                        entity.solidArea.y -= entity.speed;
+                        if (entity.solidArea.intersects(gp.obj2[i].solidArea)){
+                            if (gp.obj2[i].collision == true){
+                                entity.collisionOn = true;
+                            }
+                            if (player == true){
+                                indexOctopus = i;
+                            }
+                        }
+                        break;
+                    case "down":
+                        entity.solidArea.y += entity.speed;
+                        if (entity.solidArea.intersects(gp.obj2[i].solidArea)){
+                            if (gp.obj2[i].collision == true){
+                                entity.collisionOn = true;
+                            }
+                            if (player == true){
+                                indexOctopus = i;
+                            }
+                        }
+                        break;
+                    case "left":
+                        entity.solidArea.x -= entity.speed;
+                        if (entity.solidArea.intersects(gp.obj2[i].solidArea)){
+                            if (gp.obj2[i].collision == true){
+                                entity.collisionOn = true;
+                            }
+                            if (player == true){
+                                indexOctopus = i;
+                            }
+                        }
+                        break;
+                    case "right":
+                        entity.solidArea.x += entity.speed;
+                        if (entity.solidArea.intersects(gp.obj2[i].solidArea)){
+                            if (gp.obj2[i].collision == true){
+                                entity.collisionOn = true;
+                            }
+                            if (player == true){
+                                indexOctopus = i;
+                            }
+                        }
+                        break;
+                }
+                entity.solidArea.x = entity.solidAreaDefaultX;
+                entity.solidArea.y = entity.solidAreaDefaultY;                
+                
+                gp.obj2[i].solidArea.x = gp.obj2[i].solidAreaDefaultX;
+                gp.obj2[i].solidArea.y = gp.obj2[i].solidAreaDefaultY;
+            } 
+        }
+        return indexOctopus; // if player hit obj will return index of obj
+    }
  
     public int checkItem1(Entity entity, boolean player){
         int indexSquid = 999;
