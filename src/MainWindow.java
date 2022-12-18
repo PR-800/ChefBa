@@ -19,20 +19,20 @@ import javax.swing.*;
 public class MainWindow implements ActionListener, MouseListener, KeyListener{
     //Main
     public JFrame window;
-    public JPanel pTitle, pButton;
+    public JPanel pTitle, pButton, hButton;
     public JLabel lTitle, lSubtitle;
     public Font fTitle, fButton;
-    public JButton bStart, bQuit, bHow;
+    public JButton bStart, bQuit, bHow, hStart;
     
     //Cutscene
     public JFrame Cwindow;
     public JPanel pPic;
-    public JLabel lPic;
-    public String url;
+    public JLabel lPic, lHow;
+    public String url, urlHow;
     public static int count = 1;
-    public BufferedImage cs = null;
-    public Image imageCS;
-    public ImageIcon iconCS;
+    public BufferedImage cs = null, imgH = null;
+    public Image imageCS, imageHow;
+    public ImageIcon iconCS, iconHow;
     
     //How to play
     public JFrame Hwindow;
@@ -153,7 +153,7 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         }
         
         // **Cutscene** window
-        Cwindow = new JFrame("Chef Ba the Master Chef"); 
+        Cwindow = new JFrame("Chef Ba the Master Chef");
         Cwindow.setBackground(Color.BLACK);
         Cwindow.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         Cwindow.setUndecorated(true);
@@ -180,16 +180,45 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         Cwindow.setVisible(false);
         
         // **How to play** window
-        Hwindow = new JFrame("Chef Ba the Master Chef"); 
+        Hwindow = new JFrame("Chef Ba the Master Chef");
         Hwindow.setBackground(Color.BLACK);
         Hwindow.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         Hwindow.setUndecorated(true);
         
         //details
         pHow = new JPanel();
-        pHow.setLayout(new GridLayout(5,1));
+        pHow.setBackground(Color.BLACK);
+        urlHow = "/background/cutscene1.png";
+        try {
+            imgH = ImageIO.read(getClass().getResourceAsStream(urlHow));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        imageHow = imgH.getScaledInstance(currentScreenWidth, currentScreenHeight, Image.SCALE_SMOOTH);
+        iconHow = new ImageIcon(imageHow);
+        lHow = new JLabel();
+        lHow.setIcon(iconHow);
+        lHow.addMouseListener(this);
+        pHow.add(lHow);
         
+        // button to home
+        hButton = new JPanel();
+        hButton.setOpaque(false);
+        int howX = (int) Math.round(currentScreenWidth*0.03);
+        int howY = (int) Math.round(currentScreenHeight*0.80);
+        int howW = (int) Math.round(currentScreenWidth*0.20);
+        int howH = (int) Math.round(currentScreenHeight*0.15);
+        hButton.setBounds(howX, howY, howW, howH);
+        hStart = new JButton("Menu");
+        hStart.setBackground(Color.BLACK);
+        hStart.setForeground(Color.WHITE);
+        hStart.setFont(fButton);
+        hStart.addActionListener(this);
+        hButton.add(hStart);
+                
         //frame add
+        Hwindow.add(hButton);
+        Hwindow.add(pHow);
         Hwindow.setVisible(false);
     }
     
@@ -203,10 +232,14 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
             window.dispose();
         }
         if (e.getSource().equals(bHow)) {
-            System.exit(0);
+            Hwindow.setVisible(true);
         }
         if (e.getSource().equals(bQuit)) {
             System.exit(0);
+        }
+        if (e.getSource().equals(hStart)) {
+            window.setVisible(true);
+            Hwindow.dispose();
         }
     }  
 
