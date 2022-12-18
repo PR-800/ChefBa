@@ -46,6 +46,13 @@ public class DeadShark {
         frDeadShark.setVisible(true);
         
         try {
+            Thread.sleep(2000);
+            frDeadShark.dispose();
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        
+        try {
             Clip clip = AudioSystem.getClip();
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(
             Main.class.getResourceAsStream("/sound/win.wav"));

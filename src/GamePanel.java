@@ -57,10 +57,10 @@ public class GamePanel extends JPanel implements Runnable{
     public SuperObject obj[] = new SuperObject[10]; // 10 -> means 10 slots -> can display up to 10 objs in same time // shark
     public SuperObject obj2[] = new SuperObject[10]; // octopus
     
-    public SuperObject item1[] = new SuperObject[10];
-    public SuperObject item2[] = new SuperObject[10];
-    public SuperObject item3[] = new SuperObject[10];
-    public SuperObject item4[] = new SuperObject[10];
+    public static SuperObject item1[] = new SuperObject[10];
+    public static SuperObject item2[] = new SuperObject[10];
+    public static SuperObject item3[] = new SuperObject[10];
+    public static SuperObject item4[] = new SuperObject[10];
     
     public AssetSetter aSetter = new AssetSetter(this);
     
@@ -83,6 +83,8 @@ public class GamePanel extends JPanel implements Runnable{
         this.addKeyListener(keyH);
         this.setFocusable(true);
     }
+    
+    public Player getPlayer() { return this.player; }
     
      /////// put Item//////////
     public void setupGame(){ // set up before game start // shark

@@ -86,9 +86,9 @@ public class EndingWindow implements MouseListener, KeyListener{
             case 3 -> {
                 Ewindow.dispose();
                 reScene();
-                MainWindow main = new MainWindow();
+                new MainWindow();   //Back to menu
 //                main.getMainFrame().dispose();
-                main.getMainFrame().setVisible(true);    //Back to menu
+//                main.getMainFrame().setVisible(true);    
             }
             default -> { url = "/background/cutscene3.png"; }
         }

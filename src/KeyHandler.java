@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class KeyHandler implements KeyListener {
     
     GamePanel gp;
+    Player p;
     MainWindow main = new MainWindow();
     public boolean upPressed, downPressed, leftPressed, rightPressed;
 
@@ -58,7 +59,7 @@ public class KeyHandler implements KeyListener {
                 int confirm = JOptionPane.showConfirmDialog(null, "This action will abandon your current stage and restart the game, are you sure ?", "Confirm Action", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(confirm == JOptionPane.YES_OPTION) {
                     JFrame gpFrame = (JFrame) gp.getTopLevelAncestor();  //get JFrame
-                    gpFrame.dispose();
+                    gpFrame.dispose();                  
                     main.getMainFrame().setVisible(true);
                 }
             }                      
@@ -85,9 +86,12 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_ENTER || code == KeyEvent.VK_SPACE) {
             if (gp.ui.commandNum == 0) {
                 //Restart
-                JFrame gpFrame = (JFrame) gp.getTopLevelAncestor();  //get JFrame
-                gpFrame.dispose();
-                main.getMainFrame().setVisible(true);
+//                JFrame gpFrame = (JFrame) gp.getTopLevelAncestor();  //get JFrame
+//                gpFrame.dispose();
+                gp.getPlayer().setWX(gp.getPlayer().getTS()*12);
+                gp.getPlayer().setWY(gp.getPlayer().getTS()*9);
+                gp.gameState = gp.playState;
+//                main.getMainFrame().setVisible(true);
                 
             }
             else if (gp.ui.commandNum == 1) {

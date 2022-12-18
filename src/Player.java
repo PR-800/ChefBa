@@ -24,9 +24,11 @@ public class Player extends Entity{
     public final int screenX;
     public final int screenY;
     
-    int numSquid = 0;
-    int numAnemone = 0;
-    int numSeagrass2 = 0;
+    static int numSquid = 0;
+    static int numAnemone = 0;
+    static int numSeagrass2 = 0;
+    
+    int x, y;
     
     boolean isJumping = false;
     int jumpCounter = 0;
@@ -58,14 +60,14 @@ public class Player extends Entity{
     }
     public void setDefaultValues() {
         //player position
-//        worldX = gp.tileSize * 12;
-//        worldY = gp.tileSize * 9;
+        worldX = gp.tileSize * 12;
+        worldY = gp.tileSize * 9;
         //check ending
 //        worldX = gp.tileSize * 60;
 //        worldY = gp.tileSize * 40;
 
-    worldX = gp.tileSize * 52;
-      worldY = gp.tileSize * 11;
+//        worldX = gp.tileSize * 52;
+//        worldY = gp.tileSize * 11;
         speed = 6;
         jump = 0.0f;
         time = 0.5f;
@@ -270,6 +272,11 @@ public class Player extends Entity{
         }
     }
     
+    public void setWX(int x) { this.worldX = x; }
+    public void setWY(int y) { this.worldY = y; }
+    public int getTS() { return this.gp.tileSize; }
+
+    
     public void jump() {
         if (!isJumping) {
             isJumping = true;
@@ -304,7 +311,7 @@ public class Player extends Entity{
                 image = walkL2;
                 break;
         }
-
+       
         g2.drawImage(image, screenX, screenY, gp.tileSize*5/4, gp.tileSize*5/4, null);
         
         g2.setColor(Color.RED);

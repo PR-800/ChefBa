@@ -43,6 +43,8 @@ public class DeadPlayer {
         frDeadShark.setVisible(true);
         
     }
+    
+    public JFrame getDeadFrame() { return this.frDeadShark; }
 //    public static void main(String[] args) {
 //        new DeadShark();
 //    }
