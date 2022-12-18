@@ -142,7 +142,9 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         try {
             Clip bgm = AudioSystem.getClip();
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/sound/bgm.wav"));
-            bgm.open(inputStream);    
+            bgm.open(inputStream);
+            FloatControl gainControl = (FloatControl) bgm.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-20.0f);  
             if (audioOn == false) {
                 audioOn = true;
                 bgm.start(); 

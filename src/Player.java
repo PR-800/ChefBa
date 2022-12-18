@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -11,7 +10,7 @@ import java.util.*;
 import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 import javax.swing.JFrame;
-
+import javax.sound.sampled.*;
 
 /**
  *
@@ -32,7 +31,7 @@ public class Player extends Entity{
     boolean isJumping = false;
     int jumpCounter = 0;
     double falling = 0.0;
-    
+ 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
@@ -59,11 +58,11 @@ public class Player extends Entity{
     }
     public void setDefaultValues() {
         //player position
-//        worldX = gp.tileSize * 12;
-//        worldY = gp.tileSize * 9;
-        
-        worldX = gp.tileSize * 40;
-        worldY = gp.tileSize * 23;
+        worldX = gp.tileSize * 12;
+        worldY = gp.tileSize * 9;
+        //check ending
+//        worldX = gp.tileSize * 60;
+//        worldY = gp.tileSize * 40;
         speed = 6;
         jump = 0.0f;
         time = 0.5f;
@@ -260,13 +259,12 @@ public class Player extends Entity{
             worldX = gp.tileSize * 61;
             worldY = gp.tileSize * 26;
         }
-        
-        if (endBottom) {
+        if(endBottom) {
+            gp.gameState = gp.pauseState;
             new EndingWindow();
             JFrame gpFrame = (JFrame) gp.getTopLevelAncestor();  //get JFrame
             gpFrame.dispose();
         }
-
     }
     
     public void jump() {
@@ -337,6 +335,15 @@ public class Player extends Entity{
                     numSquid++;
                     gp.item1[i] = null;
                     System.out.println("Squid : " + numSquid);
+                    //audio
+                    try {
+                        Clip pickUp = AudioSystem.getClip();
+                        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/sound/pickUp.wav"));
+                        pickUp.open(inputStream);
+                        pickUp.start(); 
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
             }
         }
@@ -353,6 +360,15 @@ public class Player extends Entity{
                     numAnemone++;
                     gp.item2[i] = null;
                     System.out.println("Anemone : " + numAnemone);
+                    //audio
+                    try {
+                        Clip pickUp = AudioSystem.getClip();
+                        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/sound/pickUp.wav"));
+                        pickUp.open(inputStream);
+                        pickUp.start(); 
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
             }
         }
@@ -369,6 +385,15 @@ public class Player extends Entity{
                     numSeagrass2++;
                     gp.item4[i] = null;
                     System.out.println("Seagrass : " + numSeagrass2);
+                    //audio
+                    try {
+                        Clip pickUp = AudioSystem.getClip();
+                        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/sound/pickUp.wav"));
+                        pickUp.open(inputStream);
+                        pickUp.start(); 
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
             }
         }

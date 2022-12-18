@@ -30,11 +30,9 @@ public class EndingWindow implements MouseListener, KeyListener{
     private GraphicsDevice device;
     private GraphicsConfiguration config;
     private int currentScreenWidth, currentScreenHeight;
-    
-    MainWindow main = new MainWindow();
-    
+
     public EndingWindow() {
-        main.getMainFrame().dispose(); 
+         
         
         //set fullscreen
         environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -68,7 +66,6 @@ public class EndingWindow implements MouseListener, KeyListener{
         //frame add
         Ewindow.add(pPic);
         Ewindow.addKeyListener(this);
-        Ewindow.setVisible(false);
         
         Ewindow.setVisible(true);
     }
@@ -84,18 +81,14 @@ public class EndingWindow implements MouseListener, KeyListener{
     public void nextScene() {
         Ecount++;
         switch (Ecount) {
-            case 1 ->  {    
-                url = "/background/cutscene3.png";
-            }
-//            case 2 -> {     //grilled squid
-//                if () {
-//                    url = "/background/cutscene2.png";
-//                }
-//            }
-            case 2 -> {
-                reScene();
-                main.getMainFrame().setVisible(true);    //Back to menu
+            case 1 -> url = "/background/cutscene3.png";
+            case 2 -> url = "/background/cutscene1.png";
+            case 3 -> {
                 Ewindow.dispose();
+                reScene();
+                MainWindow main = new MainWindow();
+//                main.getMainFrame().dispose();
+                main.getMainFrame().setVisible(true);    //Back to menu
             }
             default -> { url = "/background/cutscene3.png"; }
         }
