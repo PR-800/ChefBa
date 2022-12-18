@@ -17,7 +17,6 @@ public class DeadPlayer {
     private JLabel lbDeadShark, lbWin;
     private ImageIcon imgDeadShark1, imgDeadShark2;
     
-    
     public DeadPlayer(){
         frDeadShark = new JFrame();
         imgDeadShark1 = new ImageIcon("");

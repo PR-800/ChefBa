@@ -26,8 +26,8 @@ public class KillShark implements MouseListener{
     private ClockShark clock;
     private Thread tClock, tShark;
     private static int countdown = 9;
-    
-    public KillShark(){
+ 
+    public KillShark(){  
         frMonster = new JFrame();
         clock = new ClockShark();
         tClock = new Thread(clock);

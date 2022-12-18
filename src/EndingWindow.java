@@ -30,10 +30,10 @@ public class EndingWindow implements MouseListener, KeyListener{
     private GraphicsDevice device;
     private GraphicsConfiguration config;
     private int currentScreenWidth, currentScreenHeight;
+    
+    GamePanel gp;
 
     public EndingWindow() {
-         
-        
         //set fullscreen
         environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         device = environment.getDefaultScreenDevice();
@@ -82,7 +82,25 @@ public class EndingWindow implements MouseListener, KeyListener{
         Ecount++;
         switch (Ecount) {
             case 1 -> url = "/background/cutscene3.png";
-            case 2 -> url = "/background/cutscene1.png";
+            case 2 -> {
+                gp = new GamePanel();
+                gp.removeAll();
+                if(gp.getPlayer().getNumSquid() >= 4 && gp.getPlayer().getNumAnemone() >= 2 && gp.getPlayer().getNumSeagrass2() >= 2) {
+                    url = "/background/cutscene1.png";
+                }
+                else if(gp.getPlayer().getNumSeagrass2() >= 3) {
+                    url = "/background/cutscene2.png";
+                }
+                else if(gp.getPlayer().getNumSquid() >= 2) {
+                    url = "/background/cutscene3.png";
+                }
+                else {
+                    url = "/background/Main.png";
+                }
+                System.out.println("squid = " + gp.getPlayer().getNumSquid());
+                System.out.println("anemone = " + gp.getPlayer().getNumAnemone());
+                System.out.println("seagrass = " + gp.getPlayer().getNumSeagrass2());
+            }
             case 3 -> {
                 Ewindow.dispose();
                 reScene();

@@ -17,7 +17,6 @@ public class ClockShark extends JLabel implements Runnable{
     private int second;
     private int remainTime;
     private int state = 0;
-    private GamePanel gp;
     private MainWindow main;
     private DeadPlayer dead;
     
@@ -48,13 +47,8 @@ public class ClockShark extends JLabel implements Runnable{
                     Thread.sleep(2000);
                     //open main
                     main = new MainWindow();
-//                    main.getMainFrame().dispose();
-//                    main.getMainFrame().setVisible(true);
                     //close dead
                     dead.getDeadFrame().dispose();
-                    //close game
-                    JFrame gpFrame = (JFrame) gp.getTopLevelAncestor();  //get JFrame
-                    gpFrame.dispose();
                     this.setRemainTime(10);
                     KillShark.setCountdown(10);
                     break;

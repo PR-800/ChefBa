@@ -24,9 +24,9 @@ public class Player extends Entity{
     public final int screenX;
     public final int screenY;
     
-    static int numSquid = 0;
-    static int numAnemone = 0;
-    static int numSeagrass2 = 0;
+    public int numSquid = 0;
+    public int numAnemone = 0;
+    public int numSeagrass2 = 0;
     
     int x, y;
     
@@ -58,6 +58,11 @@ public class Player extends Entity{
         getPlayerImage();
         
     }
+    
+    public int getNumSquid() { return this.numSquid; }
+    public int getNumAnemone() { return this.numAnemone; }
+    public int getNumSeagrass2() { return this.numSeagrass2; }
+    
     public void setDefaultValues() {
         //player position
         worldX = gp.tileSize * 12;
@@ -275,7 +280,7 @@ public class Player extends Entity{
     public void setWX(int x) { this.worldX = x; }
     public void setWY(int y) { this.worldY = y; }
     public int getTS() { return this.gp.tileSize; }
-
+    public GamePanel getGP() { return this.gp; }
     
     public void jump() {
         if (!isJumping) {
