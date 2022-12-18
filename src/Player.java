@@ -10,6 +10,7 @@ import java.io.*;
 import java.util.*;
 import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
+import javax.swing.JFrame;
 
 
 /**
@@ -47,7 +48,7 @@ public class Player extends Entity{
         solidArea.y = 25;
         solidArea.width = 40;
         solidArea.height= 57;
-        hitBoxX = new Rectangle(10, 30, 60, 35);
+        hitBoxX = new Rectangle(10, 30, 58, 35);
         
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
@@ -58,8 +59,11 @@ public class Player extends Entity{
     }
     public void setDefaultValues() {
         //player position
-        worldX = gp.tileSize * 12;
-        worldY = gp.tileSize * 9;
+//        worldX = gp.tileSize * 12;
+//        worldY = gp.tileSize * 9;
+        
+        worldX = gp.tileSize * 40;
+        worldY = gp.tileSize * 23;
         speed = 6;
         jump = 0.0f;
         time = 0.5f;
@@ -238,8 +242,29 @@ public class Player extends Entity{
 //            }
 //        }
         
+        //Check died
         if (trapTop || trapBottom || trapLeft || trapRight) {
             gp.gameState = gp.gameOverState;
+        }
+        
+        //Warp
+        if (warp1Left) {
+            worldX = gp.tileSize * 65;
+            worldY = gp.tileSize * 29;
+        }
+        if (warp2Right) {
+            worldX = gp.tileSize * 40;
+            worldY = gp.tileSize * 23;
+        }
+        if (warp3Bottom) {
+            worldX = gp.tileSize * 61;
+            worldY = gp.tileSize * 26;
+        }
+        
+        if (endBottom) {
+            new EndingWindow();
+            JFrame gpFrame = (JFrame) gp.getTopLevelAncestor();  //get JFrame
+            gpFrame.dispose();
         }
 
     }

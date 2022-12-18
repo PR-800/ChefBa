@@ -21,7 +21,7 @@ public class EndingWindow implements MouseListener, KeyListener{
     public JPanel pPic;
     public JLabel lPic;
     public String url;
-    public static int count = 1;
+    public static int Ecount = 1;
     public BufferedImage cs = null;
     public Image imageCS;
     public ImageIcon iconCS;
@@ -76,23 +76,23 @@ public class EndingWindow implements MouseListener, KeyListener{
     public JFrame getEndingWindow() { return this.Ewindow; }
     
     public void reScene() {
-        count = 0;
+        Ecount = 0;
         url = "/background/cutscene1.png";
         nextScene();
     }
     
     public void nextScene() {
-        count++;
-        switch (count) {
+        Ecount++;
+        switch (Ecount) {
             case 1 ->  {    
                 url = "/background/cutscene3.png";
             }
-            case 2 -> {     //grilled squid
+//            case 2 -> {     //grilled squid
 //                if () {
 //                    url = "/background/cutscene2.png";
 //                }
-            }
-            case 3 -> {
+//            }
+            case 2 -> {
                 reScene();
                 main.getMainFrame().setVisible(true);    //Back to menu
                 Ewindow.dispose();

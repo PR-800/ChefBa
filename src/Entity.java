@@ -30,6 +30,10 @@ public class Entity {
     public boolean topHit, bottomHit, leftHit, rightHit;
     public boolean vineLeftHit = false, vineRightHit = false;
     public boolean trapTop, trapBottom, trapLeft, trapRight;
+    public boolean endBottom = false;
+    public boolean warp1Left = false;
+    public boolean warp2Right = false;
+    public boolean warp3Bottom = false;
     
     public static boolean audioOn = false;
     

@@ -14,4 +14,6 @@ public class Tile {
     public boolean collision = false;
     public boolean climbable = false;
     public boolean trap = false;
+    public boolean ending = false;
+    public boolean warp1, warp2, warp3;
 }

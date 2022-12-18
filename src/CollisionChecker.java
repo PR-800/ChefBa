@@ -488,6 +488,33 @@ public class CollisionChecker {
             entity.trapRight = false;
         }
         
+        //Ending Scence
+        if (gp.tileM.tile[bottomHitPos1].ending || gp.tileM.tile[bottomHitPos2].ending) {
+            entity.endBottom = true;
+        } else {
+            entity.endBottom = false;
+        }
+        
+        //WARP CHECK
+        if (gp.tileM.tile[leftHitPos1].warp1 || gp.tileM.tile[leftHitPos2].warp1) {
+            entity.warp1Left = true;
+        } else {
+            entity.warp1Left = false;
+        }
+        
+        if (gp.tileM.tile[rightHitPos1].warp2 || gp.tileM.tile[rightHitPos2].warp2) {
+            entity.warp2Right = true;
+        } else {
+            entity.warp2Right = false;
+        }
+        
+        if (gp.tileM.tile[bottomHitPos1].warp3 || gp.tileM.tile[bottomHitPos2].warp3) {
+            entity.warp3Bottom = true;
+        } else {
+            entity.warp3Bottom = false;
+        }
+       
+        
     }
     
 }
