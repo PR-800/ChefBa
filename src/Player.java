@@ -58,11 +58,14 @@ public class Player extends Entity{
     }
     public void setDefaultValues() {
         //player position
-        worldX = gp.tileSize * 12;
-        worldY = gp.tileSize * 9;
+//        worldX = gp.tileSize * 12;
+//        worldY = gp.tileSize * 9;
         //check ending
 //        worldX = gp.tileSize * 60;
 //        worldY = gp.tileSize * 40;
+
+    worldX = gp.tileSize * 52;
+      worldY = gp.tileSize * 11;
         speed = 6;
         jump = 0.0f;
         time = 0.5f;

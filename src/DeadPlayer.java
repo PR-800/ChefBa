@@ -38,6 +38,7 @@ public class DeadPlayer {
         frDeadShark.add(lbDeadShark);
         
         frDeadShark.setSize(415, 430);
+        frDeadShark.setLocationRelativeTo(null);
         frDeadShark.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frDeadShark.setVisible(true);
         

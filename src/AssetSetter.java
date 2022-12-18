@@ -15,26 +15,26 @@ public class AssetSetter {
     
     public void setObjectShark(){ //instantiate default objs and place them on the map
         gp.obj[0] = new OBJ_Shark();
-        gp.obj[0].worldX = 31*gp.tileSize;
-        gp.obj[0].worldY = 14*gp.tileSize;
+        gp.obj[0].worldX = 53*gp.tileSize;
+        gp.obj[0].worldY = 11*gp.tileSize;
         
         gp.obj[1] = new OBJ_Shark();
-        gp.obj[1].worldX = 70*gp.tileSize;
-        gp.obj[1].worldY = 13*gp.tileSize;
+        gp.obj[1].worldX = 81*gp.tileSize;
+        gp.obj[1].worldY = 7*gp.tileSize;
         
         gp.obj[2] = new OBJ_Shark();
         gp.obj[2].worldX = 56*gp.tileSize;
-        gp.obj[2].worldY = 36*gp.tileSize;
+        gp.obj[2].worldY = 33*gp.tileSize;
     }
     
     public void setObjectOctopus(){ //instantiate default objs and place them on the map
         gp.obj2[0] = new OBJ_Octopus();
-        gp.obj2[0].worldX = 63*gp.tileSize;
-        gp.obj2[0].worldY = 36*gp.tileSize;
+        gp.obj2[0].worldX = 91*gp.tileSize;
+        gp.obj2[0].worldY = 40*gp.tileSize;
         
         gp.obj2[1] = new OBJ_Octopus();
-        gp.obj2[1].worldX = 90*gp.tileSize;
-        gp.obj2[1].worldY = 44*gp.tileSize;
+        gp.obj2[1].worldX = 46*gp.tileSize;
+        gp.obj2[1].worldY = 24*gp.tileSize;
     }
     
         public void setItemSquid() {
