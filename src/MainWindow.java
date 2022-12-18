@@ -51,7 +51,7 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
     public BufferedImage bg = null; 
     public Image image;
     public ImageIcon icon;
-
+    
     public MainWindow() {     
         //set game invisible
         
@@ -223,9 +223,9 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         Hwindow.add(pHow);
         Hwindow.setVisible(false);
     }
-    
+
     public JFrame getMainFrame() { return this.window; }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(bStart)) {   
@@ -288,8 +288,18 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         if(code == KeyEvent.VK_SPACE || code == KeyEvent.VK_ENTER) {
             nextScene();
         }
+        if(code == KeyEvent.VK_ESCAPE) {
+            int skip = JOptionPane.showConfirmDialog(null, "Exit to Main Menu", "Confirm Action", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(skip == JOptionPane.YES_OPTION) {
+                int confirm = JOptionPane.showConfirmDialog(null, "This action will abandon your current stage and restart the game, are you sure ?", "Confirm Action", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if(confirm == JOptionPane.YES_OPTION) {
+                    window.setVisible(true);
+                    Cwindow.dispose();
+                    reScene();
+                }
+            }                      
+        }
     }
 
     @Override public void keyReleased(KeyEvent e) {}
-
 }
