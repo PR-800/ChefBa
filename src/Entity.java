@@ -28,7 +28,7 @@ public class Entity {
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
     public boolean topHit, bottomHit, leftHit, rightHit;
-    public boolean vineLeftHit = false, vineRightHit = false;
+    public boolean vineLeft, vineRight;
     public boolean trapTop, trapBottom, trapLeft, trapRight;
     public boolean endBottom = false;
     public boolean warp1Left = false;

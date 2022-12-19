@@ -71,8 +71,8 @@ public class Player extends Entity{
 //        worldX = gp.tileSize * 60;
 //        worldY = gp.tileSize * 40;
 
-        worldX = gp.tileSize * 52;
-        worldY = gp.tileSize * 29;
+        worldX = gp.tileSize * 40;
+        worldY = gp.tileSize * 24;
         speed = 6;
         jump = 0.0f;
         time = 0.5f;
@@ -193,7 +193,7 @@ public class Player extends Entity{
                             worldX += speed;
                         }
                         else {
-                            if (vineLeftHit) {
+                            if (vineLeft) {
                                 worldY += speed/(3/2);
                                 jump();
                             }
@@ -212,7 +212,7 @@ public class Player extends Entity{
                             worldX -= speed;
                         }
                         else {
-                            if (vineRightHit) {
+                            if (vineRight) {
                                 worldY += speed/(3/2);
                                 jump();
                             }

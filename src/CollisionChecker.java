@@ -451,16 +451,16 @@ public class CollisionChecker {
         }
         
         //Climbable
-        if (gp.tileM.tile[leftHitPos1].climbable || gp.tileM.tile[leftHitPos2].climbable) {
-            entity.vineRightHit = true;
+        if (gp.tileM.tile[leftHitPos1].climbableRight || gp.tileM.tile[leftHitPos2].climbableRight) {
+            entity.vineRight = true;
         } else {
-            entity.vineRightHit = false;
+            entity.vineRight = false;
         }
 
-        if (gp.tileM.tile[rightHitPos1].climbable || gp.tileM.tile[rightHitPos2].climbable) {
-            entity.vineLeftHit = true;
+        if (gp.tileM.tile[rightHitPos1].climbableLeft || gp.tileM.tile[rightHitPos2].climbableLeft) {
+            entity.vineLeft = true;
         } else {
-            entity.vineLeftHit = false;
+            entity.vineLeft = false;
         }
         
         //Check died

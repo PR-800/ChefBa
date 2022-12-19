@@ -68,12 +68,12 @@ public class TileManager {
             tile[8] = new Tile();
             tile[8].image = ImageIO.read(getClass().getResourceAsStream("/tiles/vineL.png"));
             tile[8].collision = true;
-            tile[8].climbable = true;
+            tile[8].climbableLeft = true;
             
             tile[9] = new Tile();
             tile[9].image = ImageIO.read(getClass().getResourceAsStream("/tiles/vineR.png"));
             tile[9].collision = true;
-            tile[9].climbable = true;
+            tile[9].climbableRight = true;
             
             tile[10] = new Tile();
             tile[10].image = ImageIO.read(getClass().getResourceAsStream("/tiles/sky.png"));
