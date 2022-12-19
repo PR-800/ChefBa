@@ -73,7 +73,7 @@ public class GamePanel extends JPanel implements Runnable{
    
     public GamePanel() {
         try {
-            img = ImageIO.read(getClass().getResourceAsStream("/map/map_all.png"));
+            img = ImageIO.read(getClass().getResourceAsStream("map_all.png"));
         } catch (IOException ex) {
             Logger.getLogger(Item_Seagrass2.class.getName()).log(Level.SEVERE, null, ex);
         }
