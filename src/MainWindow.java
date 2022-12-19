@@ -190,7 +190,7 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         //details
         pHow = new JPanel();
         pHow.setBackground(Color.BLACK);
-        urlHow = "/background/howtoplayTest.png";
+        urlHow = "/background/howtoplay.png";
         try {
             imgH = ImageIO.read(getClass().getResourceAsStream(urlHow));
         } catch (IOException ex) {
