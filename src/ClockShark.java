@@ -39,7 +39,7 @@ public class ClockShark extends JLabel implements Runnable{
                     Thread.sleep(2000);
                     DeadShark.getDeadShark().dispose();
                     this.setRemainTime(10);
-                    KillShark.setCountdown(10);
+                    KillShark.setCountdown(35);
                     break;
                 }
                 else if ((this.getRemainTime() == 0) && (KillShark.getCountDown() > 0)){ // Lost Case
@@ -53,7 +53,7 @@ public class ClockShark extends JLabel implements Runnable{
                     main.getMainFrame().setVisible(true);
                     
                     this.setRemainTime(10);
-                    KillShark.setCountdown(10);
+                    KillShark.setCountdown(35);
                     break;
                 }
                 

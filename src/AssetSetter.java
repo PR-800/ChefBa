@@ -29,8 +29,8 @@ public class AssetSetter {
     
     public void setObjectOctopus(){ //instantiate default objs and place them on the map
         gp.obj2[0] = new OBJ_Octopus();
-        gp.obj2[0].worldX = 91*gp.tileSize;
-        gp.obj2[0].worldY = 40*gp.tileSize;
+        gp.obj2[0].worldX = 92*gp.tileSize;
+        gp.obj2[0].worldY = 41*gp.tileSize;
         
         gp.obj2[1] = new OBJ_Octopus();
         gp.obj2[1].worldX = 46*gp.tileSize;

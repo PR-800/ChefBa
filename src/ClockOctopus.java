@@ -40,7 +40,7 @@ public class ClockOctopus extends JLabel implements Runnable{
                     Thread.sleep(2000);
                     DeadOctopus.getDeadOct().dispose();
                     this.setRemainTime(10);
-                    KillOctopus.setCountdown(10);
+                    KillOctopus.setCountdown(40);
                     break;
                 }
                 else if ((this.getRemainTime() == 0) && (KillOctopus.getCountDown() > 0)){ // Lost Case
@@ -56,7 +56,7 @@ public class ClockOctopus extends JLabel implements Runnable{
                     main.getMainFrame().setVisible(true);
                     
                     this.setRemainTime(10);
-                    KillShark.setCountdown(10);
+                    KillShark.setCountdown(40);
                     break;
                 }
                 

@@ -25,13 +25,13 @@ public class KillOctopus implements MouseListener{
     private OctopusMove lbOctopus;
     private ClockOctopus clock;
     private Thread tClock, tOctopus;
-    private static int countdown = 9;
+    private static int countdown = 39;
     
     public KillOctopus(){
         frMonster = new JFrame();
         clock = new ClockOctopus();
         tClock = new Thread(clock);
-        lbCount = new JLabel("Kill Monster 10 times !");
+        lbCount = new JLabel("Kill Monster 40 times !");
         lbOctopus = new OctopusMove();
         lbOctopus.addMouseListener(this);
         tOctopus = new Thread(lbOctopus);

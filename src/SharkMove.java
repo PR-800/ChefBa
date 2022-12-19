@@ -17,7 +17,7 @@ public class SharkMove extends JLabel implements Runnable{
     private ImageIcon imgShark, imgShark2;
     
     public SharkMove(){
-        imgShark = new ImageIcon(getClass().getResource("liveShark2.png"));
+        imgShark = new ImageIcon(getClass().getResource("/objects/liveShark2.png"));
         imgShark2 = new ImageIcon(imgShark.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH));
         
         this.setIcon(imgShark2);

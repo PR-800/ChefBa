@@ -25,13 +25,13 @@ public class KillShark implements MouseListener{
     private SharkMove lbShark;
     private ClockShark clock;
     private Thread tClock, tShark;
-    private static int countdown = 9;
+    private static int countdown = 34;
  
     public KillShark(){  
         frMonster = new JFrame();
         clock = new ClockShark();
         tClock = new Thread(clock);
-        lbCount = new JLabel("Kill Monster 10 times !");
+        lbCount = new JLabel("Kill Monster 35 times !");
         lbShark = new SharkMove();
         lbShark.addMouseListener(this);
         tShark = new Thread(lbShark);
