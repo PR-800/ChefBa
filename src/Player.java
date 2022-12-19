@@ -65,14 +65,14 @@ public class Player extends Entity{
     
     public void setDefaultValues() {
         //player position
-        worldX = gp.tileSize * 12;
-        worldY = gp.tileSize * 9;
+//        worldX = gp.tileSize * 12;
+//        worldY = gp.tileSize * 9;
         //check ending
 //        worldX = gp.tileSize * 60;
 //        worldY = gp.tileSize * 40;
 
-//        worldX = gp.tileSize * 52;
-//        worldY = gp.tileSize * 11;
+        worldX = gp.tileSize * 52;
+        worldY = gp.tileSize * 29;
         speed = 6;
         jump = 0.0f;
         time = 0.5f;
@@ -193,7 +193,7 @@ public class Player extends Entity{
                             worldX += speed;
                         }
                         else {
-                            if (vineRightHit) {
+                            if (vineLeftHit) {
                                 worldY += speed/(3/2);
                                 jump();
                             }
@@ -212,7 +212,7 @@ public class Player extends Entity{
                             worldX -= speed;
                         }
                         else {
-                            if (vineLeftHit) {
+                            if (vineRightHit) {
                                 worldY += speed/(3/2);
                                 jump();
                             }
@@ -319,10 +319,10 @@ public class Player extends Entity{
        
         g2.drawImage(image, screenX, screenY, gp.tileSize*5/4, gp.tileSize*5/4, null);
         
-        g2.setColor(Color.RED);
-        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
-        g2.setColor(Color.GREEN);
-        g2.drawRect(screenX + hitBoxX.x, screenY + hitBoxX.y, hitBoxX.width, hitBoxX.height);
+//        g2.setColor(Color.RED);
+//        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+//        g2.setColor(Color.GREEN);
+//        g2.drawRect(screenX + hitBoxX.x, screenY + hitBoxX.y, hitBoxX.width, hitBoxX.height);
     }
     
     public void killShark(int index){

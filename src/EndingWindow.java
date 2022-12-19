@@ -85,10 +85,10 @@ public class EndingWindow implements MouseListener, KeyListener{
             case 2 -> {
                 gp = new GamePanel();
                 gp.removeAll();
-                if(gp.getPlayer().getNumSquid() >= 4 && gp.getPlayer().getNumAnemone() >= 2 && gp.getPlayer().getNumSeagrass2() >= 2) {
+                if(gp.getPlayer().getNumSquid() >= 6 && gp.getPlayer().getNumAnemone() >= 3 && gp.getPlayer().getNumSeagrass2() >= 6) {
                     url = "/background/cutscene1.png";
                 }
-                else if(gp.getPlayer().getNumSeagrass2() >= 3) {
+                else if(gp.getPlayer().getNumSeagrass2() >= 4 && gp.getPlayer().getNumAnemone() >= 1) {
                     url = "/background/cutscene2.png";
                 }
                 else if(gp.getPlayer().getNumSquid() >= 2) {
