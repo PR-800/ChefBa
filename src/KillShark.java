@@ -114,7 +114,7 @@ public class KillShark implements MouseListener{
         return KillShark.frMonster;
     }
     public static void setMonFrame(JFrame frMonster){
-        KillShark.frMonster = frMonster;
+        KillShark.frMonster = frMonster; 
     }
 //    public static void main(String[] args) {
 //        new KillShark();
