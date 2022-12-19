@@ -8,16 +8,15 @@ import java.util.logging.Logger;
 
 public class UI {
     
-    GamePanel gp;
-    Graphics2D g2;
-    Font arial_40;
-    Font vcr;
+    public GamePanel gp;
+    public Graphics2D g2;
+    public Font vcr;
     
     BufferedImage squidImage, anemoneImage, seagrass2Image;
     
     public int slotCol = 0;
     public int slotRow = 0;
-    int commandNum = 0;
+    public int commandNum = 0;
     
     public UI(GamePanel gp) {
         

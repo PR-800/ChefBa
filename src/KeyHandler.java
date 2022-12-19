@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class KeyHandler implements KeyListener {
     
-    GamePanel gp;
-    Player p;
+    public GamePanel gp;
+    public Player p;
     MainWindow main = new MainWindow();
     public boolean upPressed, downPressed, leftPressed, rightPressed;
 

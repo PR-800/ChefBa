@@ -8,7 +8,7 @@
  * @author LENOVO
  */
 public class AssetSetter {
-    GamePanel gp;
+    public GamePanel gp;
     public AssetSetter(GamePanel gp){
         this.gp = gp;
     }

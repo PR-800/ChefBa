@@ -28,11 +28,11 @@ public class Player extends Entity{
     public int numAnemone = 0;
     public int numSeagrass2 = 0;
     
-    int x, y;
+    public int x, y;
     
-    boolean isJumping = false;
-    int jumpCounter = 0;
-    double falling = 0.0;
+    public boolean isJumping = false;
+    public int jumpCounter = 0;
+    public double falling = 0.0;
  
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
