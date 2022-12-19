@@ -21,6 +21,7 @@ public class UI {
     public UI(GamePanel gp) {
         
         this.gp = gp;
+        vcr = new Font("Algerian", Font.BOLD, 50);
         
         InputStream is = getClass().getResourceAsStream("res/font/VCR_OSD_MONO.ttf");
         try {
@@ -42,6 +43,7 @@ public class UI {
         
         this.g2 = g2;
         
+        g2.setFont(vcr);
         g2.setFont(g2.getFont().deriveFont(50f));
         g2.setColor(Color.white);
         
@@ -72,6 +74,7 @@ public class UI {
         int x;
         int y;
         String text;
+        g2.setFont(vcr);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 110f));
         
         text = "Game Over";
