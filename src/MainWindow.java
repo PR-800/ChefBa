@@ -190,7 +190,7 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         //details
         pHow = new JPanel();
         pHow.setBackground(Color.BLACK);
-        urlHow = "/background/cutscene1.png";
+        urlHow = "/background/howtoplayTest.png";
         try {
             imgH = ImageIO.read(getClass().getResourceAsStream(urlHow));
         } catch (IOException ex) {
@@ -206,8 +206,8 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         // button to home
         hButton = new JPanel();
         hButton.setOpaque(false);
-        int howX = (int) Math.round(currentScreenWidth*0.03);
-        int howY = (int) Math.round(currentScreenHeight*0.80);
+        int howX = (int) Math.round(currentScreenWidth*0.01);
+        int howY = (int) Math.round(currentScreenHeight*0.85);
         int howW = (int) Math.round(currentScreenWidth*0.20);
         int howH = (int) Math.round(currentScreenHeight*0.15);
         hButton.setBounds(howX, howY, howW, howH);

@@ -119,5 +119,4 @@ public class KillShark implements MouseListener{
 //    public static void main(String[] args) {
 //        new KillShark();
 //    }
-    
 }

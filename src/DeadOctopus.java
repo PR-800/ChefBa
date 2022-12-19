@@ -14,7 +14,7 @@ import javax.swing.*;
 import javax.sound.sampled.*;
 
 public class DeadOctopus {
-    private JFrame frDeadOctopus;
+    private static JFrame frDeadOctopus;
     private JLabel lbDeadOctopus, lbWin;
     private ImageIcon imgDeadOctopus1, imgDeadOctopus2;
     
@@ -25,7 +25,7 @@ public class DeadOctopus {
         imgDeadOctopus2 = new ImageIcon(imgDeadOctopus1.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH));
         lbDeadOctopus = new JLabel(imgDeadOctopus2);
         lbWin = new JLabel("You Win !");
-        lbWin.setFont(new Font("Courier", 1, 35));
+        lbWin.setFont(new Font("Courier", 1, 45));
         lbWin.setForeground(Color.white);
         
         frDeadOctopus.setLayout(null);
@@ -33,7 +33,7 @@ public class DeadOctopus {
         lbDeadOctopus.setBounds(0, 0, sizeMon.width, sizeMon.height);
         
         Dimension sizeWin = lbWin.getPreferredSize();
-        lbWin.setBounds(120, 320, sizeWin.width+10, sizeWin.height);
+        lbWin.setBounds(100, 330, sizeWin.width+10, sizeWin.height);
         
         frDeadOctopus.add(lbWin);
         frDeadOctopus.add(lbDeadOctopus);
@@ -43,14 +43,7 @@ public class DeadOctopus {
         frDeadOctopus.setLocationRelativeTo(null);
         frDeadOctopus.setUndecorated(true);
         frDeadOctopus.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frDeadOctopus.setVisible(true);
-        
-        try {
-            Thread.sleep(2000);
-            frDeadOctopus.dispose();
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
+       
         
         try {
             Clip clip = AudioSystem.getClip();
@@ -62,7 +55,11 @@ public class DeadOctopus {
         catch (Exception e) {
             System.err.println(e.getMessage());
         }
+        frDeadOctopus.setVisible(true);
         
+    }
+    public static JFrame getDeadOct(){
+        return DeadOctopus.frDeadOctopus;
     }
 //    public static void main(String[] args) {
 //        new DeadOctopus();

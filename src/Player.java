@@ -71,8 +71,13 @@ public class Player extends Entity{
 //        worldX = gp.tileSize * 60;
 //        worldY = gp.tileSize * 40;
 
-        worldX = gp.tileSize * 40;
-        worldY = gp.tileSize * 24;
+//        worldX = gp.tileSize * 40;
+//        worldY = gp.tileSize * 24;
+
+        // check Mon
+        worldX = gp.tileSize * 52;
+        worldY = gp.tileSize * 11;
+        
         speed = 6;
         jump = 0.0f;
         time = 0.5f;

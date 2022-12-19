@@ -37,13 +37,16 @@ public class ClockOctopus extends JLabel implements Runnable{
                     sec = 0;
                     KillOctopus.getMonFrame().dispose();
                     new DeadOctopus();
+                    
+                    Thread.sleep(2000);
+                    DeadOctopus.getDeadOct().dispose();
                     this.setRemainTime(10);
                     KillOctopus.setCountdown(10);
                     break;
                 }
                 else if ((this.getRemainTime() == 0) && (KillOctopus.getCountDown() > 0)){ // Lost Case
                     state = 2;
-                    KillOctopus.getMonFrame().setVisible(false);
+                    KillOctopus.getMonFrame().dispose();
                     dead = new DeadPlayer();
                     
                     Thread.sleep(2000);
