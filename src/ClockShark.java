@@ -48,8 +48,10 @@ public class ClockShark extends JLabel implements Runnable{
                     new DeadPlayer();
                     
                     Thread.sleep(2000);
+                    DeadPlayer.getDeadPlayer().dispose();
                     main = new MainWindow();
                     main.getMainFrame().setVisible(true);
+                    
                     this.setRemainTime(10);
                     KillShark.setCountdown(10);
                     break;

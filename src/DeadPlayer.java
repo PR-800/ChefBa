@@ -14,7 +14,7 @@ import javax.swing.*;
 import javax.sound.sampled.*;
 
 public class DeadPlayer {
-    private JFrame frDeadPlayer;
+    private static JFrame frDeadPlayer;
     private JLabel lbDeadPlayer, lbLoose;
     private ImageIcon imgDeadPlayer1, imgDeadPlayer2;
     
@@ -58,8 +58,8 @@ public class DeadPlayer {
         frDeadPlayer.setVisible(true);
         
     }
-    public JFrame getDeadFrame(){
-        return this.frDeadPlayer;
+    public static JFrame getDeadPlayer(){
+        return DeadPlayer.frDeadPlayer;
     }
 //    public static void main(String[] args) {
 //        new DeadPlayer();

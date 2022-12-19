@@ -19,7 +19,6 @@ public class ClockOctopus extends JLabel implements Runnable{
     private int state = 0;
     private GamePanel gp;
     private MainWindow main;
-    private DeadPlayer dead;
     
     public void run(){
         try {
@@ -47,13 +46,15 @@ public class ClockOctopus extends JLabel implements Runnable{
                 else if ((this.getRemainTime() == 0) && (KillOctopus.getCountDown() > 0)){ // Lost Case
                     state = 2;
                     KillOctopus.getMonFrame().dispose();
-                    dead = new DeadPlayer();
+                    new DeadPlayer();
                     
                     Thread.sleep(2000);
+                    DeadPlayer.getDeadPlayer().dispose();
+                    
                     main = new MainWindow();
                     main.getMainFrame().dispose();
                     main.getMainFrame().setVisible(true);
-                    dead.getDeadFrame().dispose();
+                    
                     this.setRemainTime(10);
                     KillShark.setCountdown(10);
                     break;
