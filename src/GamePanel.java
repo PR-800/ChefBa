@@ -19,8 +19,8 @@ import javax.imageio.ImageIO;
 
 public class GamePanel extends JPanel implements Runnable{
     //Screen Settings
-    final int originalTileSize = 16;    //16*16 tile
-    final int scale = 4;
+    public final int originalTileSize = 16;    //16*16 tile
+    public final int scale = 4;
     
     //set fullscreen
     private GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -43,11 +43,11 @@ public class GamePanel extends JPanel implements Runnable{
         
     public int FPS = 60;
     
-    BufferedImage img = null;
+    public BufferedImage img = null;
     
-    TileManager tileM = new TileManager(this);
-    KeyHandler keyH = new KeyHandler(this);
-    Thread gameThread;
+    public TileManager tileM = new TileManager(this);
+    public KeyHandler keyH = new KeyHandler(this);
+    public Thread gameThread;
     public UI ui = new UI(this);
       
     public CollisionChecker cChecker = new CollisionChecker(this);

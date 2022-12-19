@@ -12,7 +12,7 @@ public class UI {
     public Graphics2D g2;
     public Font vcr;
     
-    BufferedImage squidImage, anemoneImage, seagrass2Image;
+    public BufferedImage squidImage, anemoneImage, seagrass2Image;
     
     public int slotCol = 0;
     public int slotRow = 0;

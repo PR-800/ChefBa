@@ -17,7 +17,7 @@ public class KeyHandler implements KeyListener {
     
     public GamePanel gp;
     public Player p;
-    MainWindow main = new MainWindow();
+    public MainWindow main = new MainWindow();
     public boolean upPressed, downPressed, leftPressed, rightPressed;
 
     public KeyHandler(GamePanel gp) {

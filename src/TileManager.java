@@ -17,10 +17,10 @@ import javax.imageio.ImageIO;
  * @author FiFa-PC
  */
 public class TileManager {
-    GamePanel gp;
+    public GamePanel gp;
     public Tile[] tile;
     public int mapTileNum[][];
-    
+     
     public TileManager(GamePanel gp){
         this.gp = gp;
         
