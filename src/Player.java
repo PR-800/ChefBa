@@ -18,8 +18,8 @@ import javax.sound.sampled.*;
  */
 public class Player extends Entity{
     
-    GamePanel gp;
-    KeyHandler keyH;
+    public GamePanel gp;
+    public KeyHandler keyH;
     
     public final int screenX;
     public final int screenY;
@@ -76,7 +76,7 @@ public class Player extends Entity{
 
         // check Mon
         worldX = gp.tileSize * 90;
-        worldY = gp.tileSize * 40;
+        worldY = gp.tileSize * 40; 
         
         speed = 6;
         jump = 0.0f;
