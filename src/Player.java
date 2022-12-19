@@ -49,7 +49,7 @@ public class Player extends Entity{
         solidArea.y = 25;
         solidArea.width = 40;
         solidArea.height= 57;
-        hitBoxX = new Rectangle(10, 30, 58, 35);
+        hitBoxX = new Rectangle(10, 30, 45, 35);
         
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
@@ -68,7 +68,7 @@ public class Player extends Entity{
         worldX = gp.tileSize * 12;
         worldY = gp.tileSize * 9;
         //check ending
-//        worldX = gp.tileSize * 60;
+//        worldX = gp.tileSize * 40;
 //        worldY = gp.tileSize * 40;
 
 //        worldX = gp.tileSize * 40;
