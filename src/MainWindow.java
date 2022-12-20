@@ -95,9 +95,10 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
         pTitle.setBounds(titleX, titleY, titleW, titleH);     
         lTitle = new JLabel("CHEF BA", SwingConstants.CENTER);
         lSubtitle = new JLabel("THE MASTER CHEF", SwingConstants.CENTER);
-        lTitle.setForeground(Color.WHITE);
+        Color myCream = new Color(246, 243, 235);
+        lTitle.setForeground(myCream);
         lTitle.setFont(fTitle);
-        lSubtitle.setForeground(Color.WHITE);
+        lSubtitle.setForeground(myCream);
         lSubtitle.setFont(fButton);
         pTitle.add(lTitle);
         pTitle.add(lSubtitle);
