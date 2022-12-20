@@ -18,7 +18,6 @@ public class DeadPlayer {
     private JLabel lbDeadPlayer, lbLoose;
     private ImageIcon imgDeadPlayer1, imgDeadPlayer2;
     
-    
     public DeadPlayer(){
         frDeadPlayer = new JFrame();
         imgDeadPlayer1 = new ImageIcon(getClass().getResource("/objects/deadPlayer.jpg"));
@@ -51,7 +50,7 @@ public class DeadPlayer {
             Main.class.getResourceAsStream("/sound/lose.wav"));
             clip.open(inputStream);
             FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(-10.0f);
+            gainControl.setValue(-20.0f);
             clip.start();
             } 
         catch (Exception e) {

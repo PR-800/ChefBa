@@ -52,7 +52,7 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
     public Image image;
     public ImageIcon icon;
     
-    public MainWindow() {     
+    public MainWindow() {    
         //set fullscreen
         environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         device = environment.getDefaultScreenDevice();

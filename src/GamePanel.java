@@ -96,6 +96,10 @@ public class GamePanel extends JPanel implements Runnable{
         aSetter.setItemSeagrass1();
         aSetter.setItemSeagrass2();
         
+        getPlayer().setNumSquid(0);
+        getPlayer().setNumAnemone(0);
+        getPlayer().setNumSeagrass2(0);
+        
         gameState = playState;
         
     }

@@ -17,7 +17,6 @@ public class ClockShark extends JLabel implements Runnable{
     private int second;
     private int remainTime;
     private static int state = 0;
-    private GamePanel gp;
     private MainWindow main;
     
     public void run(){

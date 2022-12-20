@@ -17,7 +17,6 @@ public class ClockOctopus extends JLabel implements Runnable{
     private int second;
     private int remainTime;
     private int state = 0;
-    private GamePanel gp;
     private MainWindow main;
     
     public void run(){
@@ -50,7 +49,6 @@ public class ClockOctopus extends JLabel implements Runnable{
                     
                     Thread.sleep(2000);
                     DeadPlayer.getDeadPlayer().dispose();
-                    
                     main = new MainWindow();
                     main.getMainFrame().dispose();
                     main.getMainFrame().setVisible(true);
