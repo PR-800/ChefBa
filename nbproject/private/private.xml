@@ -12,17 +12,31 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/KillShark.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/res/items/anemone.png</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/EndingWindow.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/Main.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/Entity.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/DeadOctopus.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/KillOctopus.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/map01.txt</file>
             <file>file:/D:/_second_year/OOP_Project/ChefBa/src/ClockOctopus.java</file>
-            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/ClockShark.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/Item_Anemone.java</file>
             <file>file:/D:/_second_year/OOP_Project/ChefBa/src/DeadPlayer.java</file>
             <file>file:/D:/_second_year/OOP_Project/ChefBa/src/AssetSetter.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/map_all.png</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/KeyHandler.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/KillShark.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/GamePanel.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/UI.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/res/items/3seagrass.png</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/GameWindow.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/MainWindow.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/ClockShark.java</file>
             <file>file:/D:/_second_year/OOP_Project/ChefBa/src/SuperObject.java</file>
             <file>file:/D:/_second_year/OOP_Project/ChefBa/src/CollisionChecker.java</file>
-            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/UI.java</file>
             <file>file:/D:/_second_year/OOP_Project/ChefBa/src/SharkMove.java</file>
-            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/DeadOctopus.java</file>
             <file>file:/D:/_second_year/OOP_Project/ChefBa/src/Player.java</file>
+            <file>file:/D:/_second_year/OOP_Project/ChefBa/src/res/items/2squid.png</file>
         </group>
     </open-files>
 </project-private>
