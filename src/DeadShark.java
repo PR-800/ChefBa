@@ -51,6 +51,8 @@ public class DeadShark {
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(
             Main.class.getResourceAsStream("/sound/win.wav"));
             clip.open(inputStream);
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-30.0f);
             clip.start();
             } 
         catch (Exception e) {

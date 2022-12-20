@@ -48,11 +48,11 @@ public class UI {
         g2.setColor(Color.white);
         
         g2.drawImage(squidImage, gp.tileSize/2, gp.tileSize/2, gp.tileSize, gp.tileSize, null);
-        g2.drawString("x " + gp.player.numSquid, 102, 75);
+        g2.drawString("x " + gp.player.getNumSquid(), 102, 75);
         g2.drawImage(anemoneImage, gp.tileSize/2, 3*gp.tileSize/2, gp.tileSize, gp.tileSize, null);
-        g2.drawString("x " + gp.player.numAnemone, 102, 145);
+        g2.drawString("x " + gp.player.getNumAnemone(), 102, 145);
         g2.drawImage(seagrass2Image, gp.tileSize/2, 5*gp.tileSize/2, gp.tileSize, gp.tileSize, null);
-        g2.drawString("x " + gp.player.numSeagrass2, 102, 210);
+        g2.drawString("x " + gp.player.getNumSeagrass2(), 102, 210);
         
         
         if (gp.gameState == gp.playState) {}

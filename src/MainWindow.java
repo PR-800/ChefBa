@@ -53,8 +53,6 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
     public ImageIcon icon;
     
     public MainWindow() {     
-        //set game invisible
-        
         //set fullscreen
         environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         device = environment.getDefaultScreenDevice();
@@ -145,7 +143,7 @@ public class MainWindow implements ActionListener, MouseListener, KeyListener{
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/sound/bgm.wav"));
             bgm.open(inputStream);
             FloatControl gainControl = (FloatControl) bgm.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(-20.0f);  
+            gainControl.setValue(-30.0f);  
             if (audioOn == false) {
                 audioOn = true;
                 bgm.start(); 

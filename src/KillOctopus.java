@@ -70,6 +70,8 @@ public class KillOctopus implements MouseListener{
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(
             Main.class.getResourceAsStream("/sound/wave.wav"));
             clip.open(inputStream);
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-10.0f);
             clip.start();
         } 
         catch (Exception e) {
@@ -88,6 +90,8 @@ public class KillOctopus implements MouseListener{
                 AudioInputStream inputStream = AudioSystem.getAudioInputStream(
                 Main.class.getResourceAsStream("/sound/sword.wav"));
                 clip.open(inputStream);
+                FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                gainControl.setValue(-10.0f);
                 clip.start();
             } 
             catch (Exception e) {

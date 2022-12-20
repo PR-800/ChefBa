@@ -50,6 +50,8 @@ public class DeadPlayer {
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(
             Main.class.getResourceAsStream("/sound/lose.wav"));
             clip.open(inputStream);
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-10.0f);
             clip.start();
             } 
         catch (Exception e) {

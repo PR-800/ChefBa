@@ -24,9 +24,9 @@ public class Player extends Entity{
     public final int screenX;
     public final int screenY;
     
-    public int numSquid = 0;
-    public int numAnemone = 0;
-    public int numSeagrass2 = 0;
+    private static int numSquid = 0;
+    private static int numAnemone = 0;
+    private static int numSeagrass2 = 0;
     
     public int x, y;
     
@@ -59,21 +59,23 @@ public class Player extends Entity{
         
     }
     
+    public void setNumSquid(int numSquid) { this.numSquid = numSquid; }
+    public void setNumAnemone(int numAnemone) { this.numAnemone = numAnemone; }
+    public void setNumSeagrass2(int numSeagrass2) { this.numSeagrass2 = numSeagrass2; }
     public int getNumSquid() { return this.numSquid; }
     public int getNumAnemone() { return this.numAnemone; }
     public int getNumSeagrass2() { return this.numSeagrass2; }
     
     public void setDefaultValues() {
         //player position
-//        worldX = gp.tileSize * 12;
-//        worldY = gp.tileSize * 9;
+        worldX = gp.tileSize * 12;
+        worldY = gp.tileSize * 9;
         //check ending
-        worldX = gp.tileSize * 60;
-        worldY = gp.tileSize * 40;
-
+//        worldX = gp.tileSize * 60;
+//        worldY = gp.tileSize * 40;
+        //check tunnel
 //        worldX = gp.tileSize * 40;
 //        worldY = gp.tileSize * 24;
-
         // check Mon
 //        worldX = gp.tileSize * 95;
 //        worldY = gp.tileSize * 24; 
@@ -170,6 +172,8 @@ public class Player extends Entity{
                                 Clip bgm = AudioSystem.getClip();
                                 AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sound/jump.wav"));
                                 bgm.open(inputStream);
+                                FloatControl gainControl = (FloatControl) bgm.getControl(FloatControl.Type.MASTER_GAIN);
+                                gainControl.setValue(-10.0f);
                                 if (audioOn == false) {
                                     audioOn = true;
                                     bgm.start(); 
@@ -346,6 +350,8 @@ public class Player extends Entity{
                         Clip pickUp = AudioSystem.getClip();
                         AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/sound/pickUp.wav"));
                         pickUp.open(inputStream);
+                        FloatControl gainControl = (FloatControl) pickUp.getControl(FloatControl.Type.MASTER_GAIN);
+                        gainControl.setValue(-10.0f);
                         pickUp.start(); 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -371,6 +377,8 @@ public class Player extends Entity{
                         Clip pickUp = AudioSystem.getClip();
                         AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/sound/pickUp.wav"));
                         pickUp.open(inputStream);
+                        FloatControl gainControl = (FloatControl) pickUp.getControl(FloatControl.Type.MASTER_GAIN);
+                        gainControl.setValue(-10.0f);
                         pickUp.start(); 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -396,6 +404,8 @@ public class Player extends Entity{
                         Clip pickUp = AudioSystem.getClip();
                         AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/sound/pickUp.wav"));
                         pickUp.open(inputStream);
+                        FloatControl gainControl = (FloatControl) pickUp.getControl(FloatControl.Type.MASTER_GAIN);
+                        gainControl.setValue(-10.0f);
                         pickUp.start(); 
                     } catch (Exception e) {
                         e.printStackTrace();

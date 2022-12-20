@@ -85,29 +85,31 @@ public class EndingWindow implements MouseListener, KeyListener{
             case 2 -> url = "/background/cutscene4.png";
             case 3 -> {
                 gp = new GamePanel();
-                gp.removeAll();
-                if(gp.getPlayer().getNumSquid() >= 5 && gp.getPlayer().getNumAnemone() >= 3 && gp.getPlayer().getNumSeagrass2() >= 5) {
+                
+                if(gp.getPlayer().getNumSquid() >= 5 && gp.getPlayer().getNumAnemone() >= 2 && gp.getPlayer().getNumSeagrass2() >= 5) {
                     url = "/background/ending1.png";
                 }
-                else if(gp.getPlayer().getNumSeagrass2() >= 4 && gp.getPlayer().getNumAnemone() >= 1 && gp.getPlayer().getNumSquid() >= 6) {
+                else if(gp.getPlayer().getNumSquid() >= 3 && gp.getPlayer().getNumAnemone() >= 1 && gp.getPlayer().getNumSeagrass2() >= 3) {
                     url = "/background/ending2.png";
                 }
-                else if(gp.getPlayer().getNumSeagrass2() >= 3 && gp.getPlayer().getNumAnemone() >= 1) {
+                else if(gp.getPlayer().getNumSquid() > 0 || gp.getPlayer().getNumAnemone() > 0 || gp.getPlayer().getNumSeagrass2() > 0) {
                     url = "/background/ending3.png";
                 }
                 else {
                     url = "/background/ending4.png";
                 }
-                System.out.println("squid = " + gp.getPlayer().getNumSquid());
-                System.out.println("anemone = " + gp.getPlayer().getNumAnemone());
-                System.out.println("seagrass = " + gp.getPlayer().getNumSeagrass2());
+//                System.out.println("squid = " + gp.getPlayer().getNumSquid());
+//                System.out.println("anemone = " + gp.getPlayer().getNumAnemone());
+//                System.out.println("seagrass = " + gp.getPlayer().getNumSeagrass2());
+                gp.getPlayer().setNumSquid(0);
+                gp.getPlayer().setNumAnemone(0);
+                gp.getPlayer().setNumSeagrass2(0);
+                gp.removeAll();
             }
             case 4 -> {
                 Ewindow.dispose();
                 reScene();
                 new MainWindow();   //Back to menu
-//                main.getMainFrame().dispose();
-//                main.getMainFrame().setVisible(true);    
             }
             default -> { url = "/background/cutscene3.png"; }
         }
