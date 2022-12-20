@@ -75,7 +75,7 @@ public class Player extends Entity{
 //        worldY = gp.tileSize * 40;
         //check tunnel
 //        worldX = gp.tileSize * 40;
-//        worldY = gp.tileSize * 24;
+//        worldY = gp.tileSize * 22;
         // check Mon
 //        worldX = gp.tileSize * 95;
 //        worldY = gp.tileSize * 24; 

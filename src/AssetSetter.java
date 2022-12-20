@@ -50,9 +50,9 @@ public class AssetSetter {
         gp.item1[2].worldX = 77*gp.tileSize;
         gp.item1[2].worldY = 23*gp.tileSize;
         
-        gp.item1[5] = new Item_Squid();
-        gp.item1[5].worldX = 61*gp.tileSize;
-        gp.item1[5].worldY = 32*gp.tileSize;
+        gp.item1[3] = new Item_Squid();
+        gp.item1[3].worldX = 61*gp.tileSize;
+        gp.item1[3].worldY = 32*gp.tileSize;
         
         gp.item1[4] = new Item_Squid();
         gp.item1[4].worldX = 68*gp.tileSize;
