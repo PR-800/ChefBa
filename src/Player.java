@@ -42,7 +42,7 @@ public class Player extends Entity{
 //        screenX = gp.screenWidth + (gp.tileSize*(gp.screenWidth));
         screenY = gp.screenHeight/2;
         
-        System.out.println(gp.screenWidth);
+//        System.out.println(gp.screenWidth);
         
         solidArea = new Rectangle();
         solidArea.x = 18;
@@ -65,11 +65,11 @@ public class Player extends Entity{
     
     public void setDefaultValues() {
         //player position
-        worldX = gp.tileSize * 12;
-        worldY = gp.tileSize * 9;
+//        worldX = gp.tileSize * 12;
+//        worldY = gp.tileSize * 9;
         //check ending
-//        worldX = gp.tileSize * 60;
-//        worldY = gp.tileSize * 40;
+        worldX = gp.tileSize * 60;
+        worldY = gp.tileSize * 40;
 
 //        worldX = gp.tileSize * 40;
 //        worldY = gp.tileSize * 24;
@@ -225,7 +225,6 @@ public class Player extends Entity{
                     }
             
             
-            //If Collision is False, Player can move  
             if(collisionOn == false){
                 spriteCounter++;
                 if (spriteCounter > 10) {
@@ -242,19 +241,6 @@ public class Player extends Entity{
         }  
         
         gp.cChecker.checkTile(this);
-//        if (collisionOn == false) {
-//            switch(direction){
-//                case "down":
-//                    worldY += speed;
-//                    break;
-//            }
-//        }
-//        else {
-//            if (jump > 11.0f) {
-//                setJump(0);
-//                audioOn = false;
-//            }
-//        }
         
         //Check died
         if (trapTop || trapBottom || trapLeft || trapRight) {

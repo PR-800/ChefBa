@@ -82,26 +82,27 @@ public class EndingWindow implements MouseListener, KeyListener{
         Ecount++;
         switch (Ecount) {
             case 1 -> url = "/background/cutscene3.png";
-            case 2 -> {
+            case 2 -> url = "/background/cutscene4.png";
+            case 3 -> {
                 gp = new GamePanel();
                 gp.removeAll();
-                if(gp.getPlayer().getNumSquid() >= 6 && gp.getPlayer().getNumAnemone() >= 3 && gp.getPlayer().getNumSeagrass2() >= 6) {
-                    url = "/background/cutscene1.png";
+                if(gp.getPlayer().getNumSquid() >= 5 && gp.getPlayer().getNumAnemone() >= 3 && gp.getPlayer().getNumSeagrass2() >= 5) {
+                    url = "/background/ending1.png";
                 }
-                else if(gp.getPlayer().getNumSeagrass2() >= 4 && gp.getPlayer().getNumAnemone() >= 1) {
-                    url = "/background/cutscene2.png";
+                else if(gp.getPlayer().getNumSeagrass2() >= 4 && gp.getPlayer().getNumAnemone() >= 1 && gp.getPlayer().getNumSquid() >= 6) {
+                    url = "/background/ending2.png";
                 }
-                else if(gp.getPlayer().getNumSquid() >= 2) {
-                    url = "/background/cutscene3.png";
+                else if(gp.getPlayer().getNumSeagrass2() >= 3 && gp.getPlayer().getNumAnemone() >= 1) {
+                    url = "/background/ending3.png";
                 }
                 else {
-                    url = "/background/Main.png";
+                    url = "/background/ending4.png";
                 }
                 System.out.println("squid = " + gp.getPlayer().getNumSquid());
                 System.out.println("anemone = " + gp.getPlayer().getNumAnemone());
                 System.out.println("seagrass = " + gp.getPlayer().getNumSeagrass2());
             }
-            case 3 -> {
+            case 4 -> {
                 Ewindow.dispose();
                 reScene();
                 new MainWindow();   //Back to menu
